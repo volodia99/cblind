@@ -22,8 +22,8 @@ cb.test_fccolorblind(nb_of_plots)
 color2 = cb.huescale(nb_of_plots, \*option)  
 _from 1 to 9 plots [FOR SEQUENTIAL DATA]_  
 cb.test_huescale(nb_of_plots, \*option)  
-_With option ***'blue','bluegreen','green',  
-'gold','brown','rose','purple'*** for less than 3 plots_
+_With option 'blue','bluegreen','green',  
+'gold','brown','rose','purple' for less than 3 plots_
 
 color3 = cb.rbscale(nb_of_plots)  
 _from 3 to 11 plots [FOR DIVERGING DATA]_  
@@ -33,15 +33,15 @@ color4 = cb.rainbow(nb_of_plots)
 _from 4 to 12 plots [RAINBOW SCHEME]_  
 cb.test_rainbow(nb_of_plots)
 
-`color, linestyle = cb.colorfunction(nb_of_plots,function,printed, \*options)`  
+### **color, linestyle = cb.colorfunction(nb_of_plots,function,printed, \*options)**  
 _13 different linestyles  
-function : ***'fccolorblind', 'rbscale', 'rainbow', 'huescale'***  
-printed : ***'c'*** (color => solid lines + different colors),  
-***'b&w'*** (black and white => black color + different linestyles)  
-***'blue'*** ([color1] blue + different linestyles)  
-***'red'*** ([color1] red + different linestyles)  
-***'yellow'*** ([color1] yellow + different linestyles)  
-***'green'*** ([color1] green + different linestyles)  
+function : 'fccolorblind', 'rbscale', 'rainbow', 'huescale'  
+printed : 'c' (color => solid lines + different colors),  
+'b&w' (black and white => black color + different linestyles)  
+'blue' ([color1] blue + different linestyles)  
+'red' ([color1] red + different linestyles)  
+'yellow' ([color1] yellow + different linestyles)  
+'green' ([color1] green + different linestyles)  
 options if function='huescale' and nb_of_plots<=3_
 
 **REFERENCE**  
