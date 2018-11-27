@@ -33,7 +33,7 @@ from 3 to 11 plots [FOR DIVERGING DATA]
 from 4 to 12 plots [RAINBOW SCHEME]  
 `cb.test_rainbow(nb_of_plots)`
 
-### **`color,linestyle = cb.colorfunction(nb_of_plots,function,printed,\*options)`**  
+### **`color,linestyle = cb.colorfunction(nb_of_plots,function,printed,*options)`**  
 13 different linestyles  
 function : 'fccolorblind', 'rbscale', 'rainbow', 'huescale'  
 printed : 'c' (color => solid lines + different colors),  
