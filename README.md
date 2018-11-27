@@ -33,7 +33,7 @@ color4 = cb.rainbow(nb_of_plots)
 _from 4 to 12 plots [RAINBOW SCHEME]_  
 cb.test_rainbow(nb_of_plots)
 
-color, linestyle = cb.colorfunction(nb_of_plots,function,printed, \*options)  
+`color, linestyle = cb.colorfunction(nb_of_plots,function,printed, \*options)`  
 _13 different linestyles  
 function : ***'fccolorblind', 'rbscale', 'rainbow', 'huescale'***  
 printed : ***'c'*** (color => solid lines + different colors),  
