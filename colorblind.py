@@ -209,6 +209,7 @@ def colorfunction(nfiles,function,printed,*options):
         estyle=[solid]*nfiles
         if function=='fccolorblind':
             color=fccolorblind(nfiles)
+            print('coucou')
         elif function=='rbscale':
             color=rbscale(nfiles)
         elif function=='rainbow':
