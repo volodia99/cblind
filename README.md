@@ -4,11 +4,11 @@ Version: 1.7
 Author: Gaylor Wafflard-Fernandez  
 Author-email: gwafflard@irap.omp.eu
 
-**INSTALLATION OF THE COLORBLIND MODULE**  
+**I. INSTALLATION OF THE COLORBLIND MODULE**  
 FROM THE colorblind directory, run  
 `python setup.py install`
 
-**AVAILABLE FUNCTIONS**  
+**II. AVAILABLE FUNCTIONS**  
 `import colorblind as cb`  
 4 functions for now  
 4 test functions
@@ -31,10 +31,10 @@ from 3 to 11 plots [FOR DIVERGING DATA]
 from 4 to 12 plots [RAINBOW SCHEME]  
 `cb.test_rainbow(nb_of_plots)`
 
-**USE OF THE COLORBLIND MODULE**  
+**III. USE OF THE COLORBLIND MODULE**  
 #### **`color,linestyle = cb.colorfunction(nb_of_plots,function,printed,*options)`**  
 13 different linestyles  
-function : 'fccolorblind', 'rbscale', 'rainbow', 'huescale'  
+function : 'fccolorblind', 'rbscale', 'rainbow', 'huescale' cf **II.**  
 printed : 'c' (color => solid lines + different colors),  
 'b&w' (black and white => black color + different linestyles)  
 'blue' ([color1] blue + different linestyles)  
