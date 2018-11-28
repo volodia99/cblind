@@ -5,9 +5,7 @@ Author: Gaylor Wafflard-Fernandez
 Author-email: gwafflard@irap.omp.eu
 
 **INSTALLATION OF THE COLORBLIND MODULE**  
-DOWNLOAD colorblind-x.x.tar.gz  
-`tar xvzf colorblind-x.x.tar.gz`  
-FROM THE colorblind-x.x directory, run  
+FROM THE colorblind directory, run  
 `python setup.py install`
 
 **USE OF THE COLORBLIND MODULE**  
