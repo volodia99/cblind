@@ -1,5 +1,6 @@
 # colorblind
 A colorblind-friendly python module that allows optimal color choice for plotting multiple curves  
+Optimized for python 3  
 Version: 1.7  
 Author: Gaylor Wafflard-Fernandez  
 Author-email: gwafflard@irap.omp.eu
