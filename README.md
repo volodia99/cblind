@@ -8,7 +8,7 @@ Author-email: gwafflard@irap.omp.eu
 FROM THE colorblind directory, run  
 `python setup.py install`
 
-**USE OF THE COLORBLIND MODULE**  
+**AVAILABLE FUNCTIONS**  
 `import colorblind as cb`  
 4 functions for now  
 4 test functions
@@ -31,6 +31,7 @@ from 3 to 11 plots [FOR DIVERGING DATA]
 from 4 to 12 plots [RAINBOW SCHEME]  
 `cb.test_rainbow(nb_of_plots)`
 
+**USE OF THE COLORBLIND MODULE**  
 #### **`color,linestyle = cb.colorfunction(nb_of_plots,function,printed,*options)`**  
 13 different linestyles  
 function : 'fccolorblind', 'rbscale', 'rainbow', 'huescale'  
