@@ -1,5 +1,6 @@
 # colorblind
 A colorblind-friendly python module that allows optimal color choice for plotting multiple curves  
+Optimized for python 3  
 3 optimal colormaps are now available to map 2D fields  
 Version: 1.8  
 Author: Gaylor Wafflard-Fernandez  
