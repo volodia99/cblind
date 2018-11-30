@@ -1,4 +1,5 @@
 import numpy as np
+import scipy.special as ss
 import matplotlib.pyplot as plt
 from matplotlib import colors as mcolors
 from random import shuffle
@@ -237,6 +238,59 @@ def colorfunction(nfiles,function,printed,*options):
 
     return(color,estyle)
 
+def cbmap(function):
+    x=np.linspace(0.,1.,1000)
+    if function=='rbscale':
+        red=0.237-2.13*x+26.92*x**2-65.5*x**3+63.5*x**4-22.36*x**5
+        green=((0.572+1.524*x-1.811*x**2)/(1.-0.291*x+0.1574*x**2))**2
+        blue=(1./(1.579-4.03*x+12.92*x**2-31.4*x**3+48.6*x**4-23.36*x**5))
+    if function=='rainbow':
+        red = (0.472-0.567*x+4.05*x**2)/(1.+8.72*x-19.17*x**2+14.1*x**3)
+        green = 0.108932-1.22635*x+27.284*x**2-98.577*x**3+163.3*x**4-131.395*x**5+40.634*x**6
+        blue = 1./(1.97+3.54*x-68.5*x**2+243*x**3-297*x**4+125*x**5)
+    if function=='huescale':
+        red = 1.-0.392*(1.+ss.erf((x-0.869)/0.255))
+        green = 1.021-0.456*(1.+ss.erf((x-0.527)/0.376))
+        blue = 1.-0.493*(1.+ss.erf((x-0.272)/0.309))
+
+    redline=[]
+    greenline=[]
+    blueline=[]
+    for i in range(len(x)):
+        redline.append((x[i],red[i],red[i]))
+        greenline.append((x[i],green[i],green[i]))
+        blueline.append((x[i],blue[i],blue[i]))
+
+    cdict = {'red':   redline,
+             'green': greenline,
+             'blue': blueline}
+
+    cbcmap = mcolors.LinearSegmentedColormap('cmap_%s' %(function), cdict)
+    return(cbcmap)
+
+def cbmap_discrete(function):
+    cbcmap = cbmap(function)
+
+    cmaplist = [cbcmap(i) for i in range(cbcmap.N)]
+    cbcmap_n = cbcmap.from_list('cbcmap_n', cmaplist, cbcmap.N)
+    return(cbcmap_n)
+
+def norm_discrete(data, function, nbin):
+    bounds=np.linspace(data.min(),data.max(),nbin+1)
+    cbcmap_n = cbmap_discrete(function)
+    norm=mcolors.BoundaryNorm(bounds,cbcmap_n.N)
+    if(nbin>=cbcmap_n.N):
+        print('CAREFUL : ONLY %d DIFFERENT COLORS IN THIS COLORMAP' %(cbcmap_n.N))
+    return(norm)
+
+def mapping(fig,ax,data2d,function):
+    im=ax.imshow(data2d, cmap=cbmap(function), aspect='auto')
+    fig.colorbar(im)
+
+def mapping_discrete(fig,ax,data2d,function,nbin):
+    im = ax.imshow(data2d, cmap=cbmap_discrete(function), norm=norm_discrete(data2d,function,nbin), aspect='auto')
+    fig.colorbar(im)
+
 def test_fccolorblind(ny):
     nx=100
     x=np.linspace(0,10, nx)
@@ -310,4 +364,26 @@ def test_rainbow(ny):
         # plt.plot(x,y[i], color[i], linewidth=2.0)
         plt.plot(x,y[i], linewidth=2.0)
 
+    plt.show()
+
+def test_mapping(function):
+    fig,ax=plt.subplots()
+
+    r = np.arange(-np.pi, np.pi, 0.1)
+    t = np.arange(0, 2*np.pi, 0.1)
+    X, Y = np.meshgrid(r, t)
+    data = np.cos(X) * np.sin(Y) * 10
+
+    mapping(fig,ax,data,function)
+    plt.show()
+
+def test_mapping_discrete(function,nbin):
+    fig,ax=plt.subplots()
+
+    r = np.arange(-np.pi, np.pi, 0.1)
+    t = np.arange(0, 2*np.pi, 0.1)
+    X, Y = np.meshgrid(r, t)
+    data = np.cos(X) * np.sin(Y) * 10
+
+    mapping_discrete(fig,ax,data,function,nbin)
     plt.show()
