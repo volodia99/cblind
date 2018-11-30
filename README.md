@@ -45,13 +45,14 @@ printed : 'c' (color => solid lines + different colors),
 'green' ([color1] green + different linestyles)  
 options if function='huescale' and nb_of_plots<=3
 
-**III. USE OF THE COLORBLIND MODULE - COLORMAPS**  
+**IV. USE OF THE COLORBLIND MODULE - COLORMAPS**  
 `cmap = cb.cbmap(function)`  
 `cmap_discrete = cb.cbmap_discrete(function)`  
 `norm_discrete = cb.norm_discrete(data2d, function, nbin)`  
 function : 'rbscale', 'rainbow', 'huescale' cf **II.**  
-data2d : 2D field
-nbin : number of different colors used in the discretized colormap
+data2d : 2D field  
+nbin : number of different colors used in the discretized colormap  
+
 **a) Example, with a field `data2d`**  
 `import matplotlib.pyplot as plt`  
 
@@ -62,6 +63,7 @@ nbin : number of different colors used in the discretized colormap
 `fig2, ax2 = plt.subplots()`  
 `im=ax2.imshow(data2d, cmap=cmap_discrete, norm=norm_discrete, aspect='auto')`  
 `fig2.colorbar(im)`  
+
 **b) Basic mapping functions**  
 #### **`cb.mapping(fig,ax,data2d,function)`**  
 #### **`cb.mapping_discrete(fig,ax,data2d,function,nbin)`**  
