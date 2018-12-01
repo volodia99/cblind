@@ -65,8 +65,9 @@ nbin : number of different colors used in the discretized colormap
 `fig2.colorbar(im)`  
 
 **b) Basic mapping functions**  
-#### **`cb.mapping(fig,ax,data2d,function)`**  
-#### **`cb.mapping_discrete(fig,ax,data2d,function,nbin)`**  
+#### **`cb.mapping(fig,ax,data2d,function,extent)`**  
+#### **`cb.mapping_discrete(fig,ax,data2d,function,extent,nbin)`**  
+with extent a list such as [x[0],x[-1],y[0],y[-1]]  
 `cb.test_mapping(function)`  
 `cb.test_mapping_discrete(function,nbin)`  
 

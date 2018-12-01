@@ -279,12 +279,12 @@ def norm_discrete(data, function, nbin):
         print('CAREFUL : ONLY %d DIFFERENT COLORS IN THIS COLORMAP' %(cbcmap_n.N))
     return(norm)
 
-def mapping(fig,ax,data2d,function):
-    im=ax.imshow(data2d, cmap=cbmap(function), aspect='auto')
+def mapping(fig,ax,data2d,function,extent):
+    im=ax.imshow(data2d, cmap=cbmap(function), aspect='auto', extent=extent)
     fig.colorbar(im)
 
-def mapping_discrete(fig,ax,data2d,function,nbin):
-    im = ax.imshow(data2d, cmap=cbmap_discrete(function), norm=norm_discrete(data2d,function,nbin), aspect='auto')
+def mapping_discrete(fig,ax,data2d,function,extent,nbin):
+    im = ax.imshow(data2d, cmap=cbmap_discrete(function), norm=norm_discrete(data2d,function,nbin), aspect='auto', extent=extent)
     fig.colorbar(im)
 
 def test_fccolorblind(ny):
@@ -367,10 +367,11 @@ def test_mapping(function):
 
     r = np.arange(-np.pi, np.pi, 0.1)
     t = np.arange(0, 2*np.pi, 0.1)
+    extent = [r[0],r[-1],t[0],t[-1]]
     X, Y = np.meshgrid(r, t)
     data = np.cos(X) * np.sin(Y) * 10
 
-    mapping(fig,ax,data,function)
+    mapping(fig,ax,data,function,extent)
     plt.show()
 
 def test_mapping_discrete(function,nbin):
@@ -378,8 +379,9 @@ def test_mapping_discrete(function,nbin):
 
     r = np.arange(-np.pi, np.pi, 0.1)
     t = np.arange(0, 2*np.pi, 0.1)
+    extent = [r[0],r[-1],t[0],t[-1]]
     X, Y = np.meshgrid(r, t)
     data = np.cos(X) * np.sin(Y) * 10
 
-    mapping_discrete(fig,ax,data,function,nbin)
+    mapping_discrete(fig,ax,data,function,extent,nbin)
     plt.show()
