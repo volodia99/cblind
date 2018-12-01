@@ -2,12 +2,11 @@ import numpy as np
 import scipy.special as ss
 import matplotlib.pyplot as plt
 from matplotlib import colors as mcolors
-from random import shuffle
 from cycler import cycler
 
 def fccolorblind(number_of_plots):
-    clist=list(mcolors.cnames.values())
-    shuffle(clist)
+    prop_cycle=plt.rcParams['axes.prop_cycle']
+    clist=prop_cycle.by_key()['color']
 
     if(number_of_plots<=4):
         colorscheme=['#4477AA','#CC6677','#DDCC77','#117733']
@@ -17,7 +16,6 @@ def fccolorblind(number_of_plots):
         plt.rcParams['axes.prop_cycle'] = cycler('color', colorscheme)
     else:
         colorscheme=clist
-        plt.rcParams['axes.prop_cycle'] = cycler('color', colorscheme)
         print("OUT OF RANGE[1-12] : COLORBLIND MODE DEACTIVATED ---> DEFAULT MODE")
     return(colorscheme)
 
@@ -67,8 +65,9 @@ def huescale(number_of_plots, *option):
             colorscheme=['#D95F0E','#FEC44F','#FFF7BC']
             plt.rcParams['axes.prop_cycle'] = cycler('color', colorscheme)
 
-    clist=list(mcolors.cnames.values())
-    shuffle(clist)
+    prop_cycle=plt.rcParams['axes.prop_cycle']
+    clist=prop_cycle.by_key()['color']
+
     if(number_of_plots==4):
         colorscheme=['#CC4C02','#FB9A29','#FED98E','#FFFBD5']
         plt.rcParams['axes.prop_cycle'] = cycler('color', colorscheme)
@@ -91,13 +90,12 @@ def huescale(number_of_plots, *option):
         print("ONLY OCHERSCALE FOR MORE THAN 3 PLOTS")
     if(number_of_plots>9):
         colorscheme=clist
-        plt.rcParams['axes.prop_cycle'] = cycler('color', colorscheme)
         print("OUT OF RANGE[1-9] : COLORBLIND MODE DEACTIVATED ---> DEFAULT MODE")
     return(colorscheme)
 
 def rbscale(number_of_plots):
-    clist=list(mcolors.cnames.values())
-    shuffle(clist)
+    prop_cycle=plt.rcParams['axes.prop_cycle']
+    clist=prop_cycle.by_key()['color']
 
     if(number_of_plots==3):
         colorscheme=['#99C7EC','#FFFAD2','#F5A275']
@@ -128,13 +126,12 @@ def rbscale(number_of_plots):
         plt.rcParams['axes.prop_cycle'] = cycler('color', colorscheme)
     else:
         colorscheme=clist
-        plt.rcParams['axes.prop_cycle'] = cycler('color', colorscheme)
         print("OUT OF RANGE[3-11] : COLORBLIND MODE DEACTIVATED ---> DEFAULT MODE")
     return(colorscheme)
 
 def rainbow(number_of_plots):
-    clist=list(mcolors.cnames.values())
-    shuffle(clist)
+    prop_cycle=plt.rcParams['axes.prop_cycle']
+    clist=prop_cycle.by_key()['color']
 
     if(number_of_plots==4):
         colorscheme=['#404096','#57A3AD','#DEA73A','#D92120']
@@ -165,7 +162,6 @@ def rainbow(number_of_plots):
         plt.rcParams['axes.prop_cycle'] = cycler('color', colorscheme)
     else:
         colorscheme=clist
-        plt.rcParams['axes.prop_cycle'] = cycler('color', colorscheme)
         print("OUT OF RANGE[4-12] : COLORBLIND MODE DEACTIVATED ---> DEFAULT MODE")
     return(colorscheme)
 
