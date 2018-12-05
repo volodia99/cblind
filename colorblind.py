@@ -279,6 +279,22 @@ def norm_discrete(data, function, nbin):
         print('CAREFUL : ONLY %d DIFFERENT COLORS IN THIS COLORMAP' %(cbcmap_n.N))
     return(norm)
 
+def reverse_colormap(cmap, name = 'my_cmap_r'):     
+    reverse = []                  
+    k = []                          
+
+    for key in cmap._segmentdata:    
+        k.append(key)
+        channel = cmap._segmentdata[key]
+        data = []
+        for t in channel:                    
+            data.append((1-t[0],t[2],t[1]))            
+        reverse.append(sorted(data))    
+
+    LinearL = dict(zip(k,reverse))
+    my_cmap_r = mcolors.LinearSegmentedColormap(name, LinearL) 
+    return my_cmap_r
+
 def mapping(fig,ax,data2d,function,extent):
     im=ax.imshow(data2d, cmap=cbmap(function), aspect='auto', extent=extent)
     fig.colorbar(im)
