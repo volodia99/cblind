@@ -53,6 +53,9 @@ function : 'rbscale', 'rainbow', 'huescale' cf **II.**
 data2d : 2D field  
 nbin : number of different colors used in the discretized colormap  
 
+Reverse colormap cmap :  
+`cmap_r = cb.reverse_colormap(cmap)`  
+
 **a) Example, with a field `data2d`**  
 `import matplotlib.pyplot as plt`  
 
