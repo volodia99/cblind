@@ -9,7 +9,7 @@ from matplotlib import cm
 
 from rich import print as rprint
 
-PALETTES = ("rbscale", "rainbow", "huescale")
+PALETTES = ("rbscale", "rainbow", "huescale", "solstice", "bird", "pregunta", "iris")
 PALETTES_FULL = (*PALETTES,*tuple([i+"_r" for i in PALETTES]))
 
 STYLES = {
@@ -41,7 +41,6 @@ def print_warn(message):
 class Colorplots:
     def cblind(self, ncurves):
         stylescheme = [STYLES[key] for key in list(STYLES.keys())]
-        stylescheme = stylescheme[0:ncurves]
         # stylescheme = [STYLES["solid"]]*ncurves
         prop_cycle = plt.rcParams['axes.prop_cycle']
         clist = prop_cycle.by_key()['color']
@@ -53,12 +52,27 @@ class Colorplots:
             plt.rcParams['axes.prop_cycle'] = cycler('color', colorscheme)
         elif(ncurves>12 and ncurves<=156):
             colorscheme = ['#332288','#88CCEE','#117733','#DDCC77','#CC6677','#AA4499','#44AA99','#999933','#882255','#661100','#6699CC','#AA4466']
-            colorscheme = colorscheme[0:ncurves]
-            plt.rcParams['axes.prop_cycle'] = cycler('linestyle', stylescheme)*cycler('color', colorscheme)
+            plt.rcParams['axes.prop_cycle'] = cycler('linestyle', stylescheme[0:ncurves])*cycler('color', colorscheme[0:ncurves])
             print_warn("out of range [1-12]: changed the linestyle")
         else:
             colorscheme = clist
             print_warn("out of range [1-156]: coloblind mode deactivated")
+        return(colorscheme, stylescheme)
+
+    def contrast(self, ncurves):
+        stylescheme = [STYLES[key] for key in list(STYLES.keys())]
+        prop_cycle = plt.rcParams['axes.prop_cycle']
+        clist = prop_cycle.by_key()['color']
+        if(ncurves<=4):
+            colorscheme = ['#000000','#004488','#BB5566','#DDAA33']
+            plt.rcParams['axes.prop_cycle'] = cycler('color', colorscheme)
+        elif(ncurves>4 and ncurves<=52):
+            colorscheme = ['#000000','#004488','#BB5566','#DDAA33']
+            plt.rcParams['axes.prop_cycle'] = cycler('linestyle', stylescheme[0:ncurves])*cycler('color', colorscheme[0:ncurves])
+            print_warn("out of range [1-4]: changed the linestyle")
+        else:
+            colorscheme = clist
+            print_warn("out of range [1-52]: coloblind mode deactivated")
         return(colorscheme, stylescheme)
 
     def huescale(self, ncurves, *args):
@@ -203,6 +217,42 @@ class Colorplots:
             print_warn("out of range [4-12]: coloblind mode deactivated")
         return(colorscheme, stylescheme)
 
+    def solstice(self, ncurves):
+        stylescheme = [STYLES["solid"]]*ncurves
+        prop_cycle=plt.rcParams['axes.prop_cycle']
+        clist=prop_cycle.by_key()['color']
+        if(ncurves<=11):
+            colorscheme = ['#364B9A','#4A7BB7','#6EA6CD','#98CAE1','#C2E4EF','#EAECCC','#FEDA8B','#FDB366','#F67E4B','#DD3D2D','#A50026']
+            plt.rcParams['axes.prop_cycle'] = cycler('color', colorscheme)
+        else:
+            colorscheme = clist
+            print_warn("out of range [1-11]: coloblind mode deactivated")
+        return(colorscheme, stylescheme)
+
+    def bird(self, ncurves):
+        stylescheme = [STYLES["solid"]]*ncurves
+        prop_cycle=plt.rcParams['axes.prop_cycle']
+        clist=prop_cycle.by_key()['color']
+        if(ncurves<=9):
+            colorscheme = ['#2166AC','#4393C3','#92C5DE','#D1E5F0','#F7F7F7','#FDDBC7','#F4A582','#D6604D','#B2182B']
+            plt.rcParams['axes.prop_cycle'] = cycler('color', colorscheme)
+        else:
+            colorscheme = clist
+            print_warn("out of range [1-9]: coloblind mode deactivated")
+        return(colorscheme, stylescheme)
+
+    def pregunta(self, ncurves):
+        stylescheme = [STYLES["solid"]]*ncurves
+        prop_cycle=plt.rcParams['axes.prop_cycle']
+        clist=prop_cycle.by_key()['color']
+        if(ncurves<=9):
+            colorscheme = ['#762A83','#9970AB','#C2A5CF','#E7D4E8','#F7F7F7','#D9F0D3','#ACD39E','#5AAE61','#1B7837']
+            plt.rcParams['axes.prop_cycle'] = cycler('color', colorscheme)
+        else:
+            colorscheme = clist
+            print_warn("out of range [1-9]: coloblind mode deactivated")
+        return(colorscheme, stylescheme)
+
     def monocolor(self, ncurves, *args):
         possible_args = ("b&w", "blue", "red", "yellow", "green", "purple")
         printing = "b&w"
@@ -294,19 +344,29 @@ def _get_cbmap(palette, nbin=None):
         green = 1.021-0.456*(1.+ss.erf((x-0.527)/0.376))
         blue = 1.-0.493*(1.+ss.erf((x-0.272)/0.309))
 
-    redline=[]
-    greenline=[]
-    blueline=[]
-    for i in range(len(x)):
-        redline.append((x[i],red[i],red[i]))
-        greenline.append((x[i],green[i],green[i]))
-        blueline.append((x[i],blue[i],blue[i]))
+    if palette_tmp=="rbscale" or palette_tmp=="rainbow" or palette_tmp=="huescale":
+        redline=[]
+        greenline=[]
+        blueline=[]
+        for i in range(len(x)):
+            redline.append((x[i],red[i],red[i]))
+            greenline.append((x[i],green[i],green[i]))
+            blueline.append((x[i],blue[i],blue[i]))
 
-    cdict = {'red':   redline,
-             'green': greenline,
-             'blue': blueline}
+        cdict = {'red':   redline,
+                 'green': greenline,
+                 'blue': blueline}
 
-    cbcmap = mcolors.LinearSegmentedColormap(f"{palette_tmp}", cdict, N=nbin)
+        cbcmap = mcolors.LinearSegmentedColormap(f"{palette_tmp}", cdict, N=nbin)
+    elif palette_tmp=="solstice":
+        cbcmap = mcolors.LinearSegmentedColormap.from_list(f"{palette_tmp}", Colorplots().solstice(11)[0], N=nbin)
+    elif palette_tmp=="bird":
+        cbcmap = mcolors.LinearSegmentedColormap.from_list(f"{palette_tmp}", Colorplots().bird(9)[0], N=nbin)
+    elif palette_tmp=="pregunta":
+        cbcmap = mcolors.LinearSegmentedColormap.from_list(f"{palette_tmp}", Colorplots().pregunta(9)[0], N=nbin)
+    elif palette_tmp=="iris":
+        cmap_iris = ["#FEFBE9", "#FCF7D5", "#F5F3C1", "#EAF0B5", "#DDECBF", "#D0E7CA", "#C2E3D2", "#B5DDD8", "#A8D8DC", "#9BD2E1", "#8DCBE4", "#81C4E7", "#7BBCE7", "#7EB2E4", "#88A5DD", "#9398D2", "#9B8AC4", "#9D7DB2", "#9A709E", "#906388", "#805770", "#684957", "#46353A"]
+        cbcmap = mcolors.LinearSegmentedColormap.from_list(f"{palette_tmp}", cmap_iris, N=nbin)
     if palette[-2:]=="_r":
         cbcmap = reversed_cmap(cbcmap, name=f"{palette}_r", nbin=nbin)
     return(cbcmap)
@@ -337,6 +397,21 @@ def test_cblind(ny):
 
     plt.show()
 
+def test_contrast(ny):
+    nx=100
+    x=np.linspace(0,10, nx)
+    y=np.zeros((ny,nx), dtype=int)
+    color, linestyle = Colorplots().contrast(ny)
+
+    fig, ax = plt.subplots()
+    for i in range(ny):
+        for j in range(nx):
+            y[i][j]=x[j]+i
+        # plt.plot(x,y[i], color[i], linewidth=2.0)
+        ax.plot(x,y[i], linewidth=1.5)
+
+    plt.show()
+
 def test_huescale(ny, *args):
     nx=100
     x=np.linspace(0,10, nx)
@@ -357,6 +432,51 @@ def test_rbscale(ny):
     x=np.linspace(0,10, nx)
     y=np.zeros((ny,nx), dtype=int)
     color, linestyle = Colorplots().rbscale(ny)
+
+    fig, ax = plt.subplots()
+    for i in range(ny):
+        for j in range(nx):
+            y[i][j]=x[j]+i
+        # plt.plot(x,y[i], color[i], linewidth=2.0)
+        ax.plot(x,y[i], linewidth=2.0)
+
+    plt.show()
+
+def test_solstice(ny):
+    nx=100
+    x=np.linspace(0,10, nx)
+    y=np.zeros((ny,nx), dtype=int)
+    color, linestyle = Colorplots().solstice(ny)
+
+    fig, ax = plt.subplots()
+    for i in range(ny):
+        for j in range(nx):
+            y[i][j]=x[j]+i
+        # plt.plot(x,y[i], color[i], linewidth=2.0)
+        ax.plot(x,y[i], linewidth=2.0)
+
+    plt.show()
+
+def test_bird(ny):
+    nx=100
+    x=np.linspace(0,10, nx)
+    y=np.zeros((ny,nx), dtype=int)
+    color, linestyle = Colorplots().bird(ny)
+
+    fig, ax = plt.subplots()
+    for i in range(ny):
+        for j in range(nx):
+            y[i][j]=x[j]+i
+        # plt.plot(x,y[i], color[i], linewidth=2.0)
+        ax.plot(x,y[i], linewidth=2.0)
+
+    plt.show()
+
+def test_pregunta(ny):
+    nx=100
+    x=np.linspace(0,10, nx)
+    y=np.zeros((ny,nx), dtype=int)
+    color, linestyle = Colorplots().pregunta(ny)
 
     fig, ax = plt.subplots()
     for i in range(ny):

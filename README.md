@@ -2,7 +2,7 @@
 A colorblind-friendly python module that allows optimal color choice for plotting multiple curves  
 Works only with python 3  
 3 optimal colormaps are now available to map 2D fields  
-Version: 2.2
+Version: 2.2.1
 Author: Gaylor Wafflard-Fernandez  
 Author-email: gaylor.wafflard@univ-grenoble-alpes.fr
 
@@ -10,7 +10,7 @@ Author-email: gaylor.wafflard@univ-grenoble-alpes.fr
 `pip install cblind`
 
 **II. USAGE FOR PLOTTING**  
-`import cblind as cb`
+`import cblind as cb`  
 5 palette functions for now  
 6 test plotting functions
 
@@ -18,6 +18,11 @@ Author-email: gaylor.wafflard@univ-grenoble-alpes.fr
 from 1 to 12 plots [DISTINCT COLORS]  
 For more than 12 plots, the linestyle is changed  
 `cb.test_cblind(nb_of_plots)`
+
+`color, linestyle = cb.Coloplots().contrast(nb_of_plots)`  
+for less than 4 contrast plots [DISTINCT COLORS]  
+For more than 4 plots, the linestyle is changed  
+`cb.test_contrast(nb_of_plots)`
 
 `color, linestyle = cb.Coloplots().huescale(nb_of_plots, \*option)`  
 from 1 to 9 plots [SEQUENTIAL DATA]  
@@ -28,6 +33,18 @@ With option 'blue','bluegreen','green',
 `color, linestyle = cb.Coloplots().rbscale(nb_of_plots)`  
 from 3 to 11 plots [DIVERGING DATA]  
 `cb.test_rbscale(nb_of_plots)`
+
+`color, linestyle = cb.Coloplots().solstice(nb_of_plots)`  
+for less than 11 plots [DIVERGING DATA]  
+`cb.test_solstice(nb_of_plots)`
+
+`color, linestyle = cb.Coloplots().bird(nb_of_plots)`  
+for less than 9 plots [DIVERGING DATA]  
+`cb.test_bird(nb_of_plots)`
+
+`color, linestyle = cb.Coloplots().pregunta(nb_of_plots)`  
+for less than 9 plots [DIVERGING DATA]  
+`cb.test_pregunta(nb_of_plots)`
 
 `color, linestyle = cb.Coloplots().rainbow(nb_of_plots)`  
 from 4 to 12 plots [RAINBOW SCHEME]  
@@ -41,8 +58,10 @@ With option "b&w", "blue", "red", "yellow", "green", "purple"
 
 **III. USAGE OF COLORMAPS**  
 `cmap = cb.cbmap(palette, nbin)`  
-palette : 'rbscale', 'rainbow', 'huescale' cf **II.**, but also all colormaps from matplotlib + "\_r" variants for reverse colormaps
-nbin : discretization of the colormap
+palette : 'rbscale', 'rainbow', 'huescale', 
+'solstice', 'bird', 'pregunta', 'iris',  cf **II.**, 
+but also all colormaps from matplotlib + "\_r" variants for reverse colormaps  
+nbin : discretization of the colormap  
 data2d : 2D field  
 
 **a) Example, with a field `data2d`**  
