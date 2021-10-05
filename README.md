@@ -2,7 +2,7 @@
 A colorblind-friendly python module that allows optimal color choice for plotting multiple curves  
 Works only with python 3  
 3 optimal colormaps are now available to map 2D fields  
-Version: 2.2.1
+Version: 2.2.2
 Author: Gaylor Wafflard-Fernandez  
 Author-email: gaylor.wafflard@univ-grenoble-alpes.fr
 
@@ -58,8 +58,8 @@ With option "b&w", "blue", "red", "yellow", "green", "purple"
 
 **III. USAGE OF COLORMAPS**  
 `cmap = cb.cbmap(palette, nbin)`  
-palette : 'rbscale', 'rainbow', 'huescale', 
-'solstice', 'bird', 'pregunta', 'iris',  cf **II.**, 
+palette : 'cb.rbscale', 'cb.rainbow', 'cb.huescale', 
+'cb.solstice', 'cb.bird', 'cb.pregunta', 'cb.iris',  cf **II.**, 
 but also all colormaps from matplotlib + "\_r" variants for reverse colormaps  
 nbin : discretization of the colormap  
 data2d : 2D field  
@@ -68,11 +68,11 @@ data2d : 2D field
 `import matplotlib.pyplot as plt`  
 
 `fig, ax = plt.subplots()`  
-`im=ax.imshow(data2d, cmap=cb.cbmap("rainbow_r", nbin=10), aspect='auto')`  
+`im=ax.imshow(data2d, cmap=cb.cbmap("cb.rainbow_r", nbin=10), aspect='auto')`  
 `fig.colorbar(im)`  
 
 `fig, ax = plt.subplots()`  
-`im=ax.imshow(data2d, cmap=cb.cbmap("inferno"), aspect='auto')`
+`im=ax.imshow(data2d, cmap=cb.cbmap("cb.inferno"), aspect='auto')`
 `fig.colorbar(im)`  
 
 **b) Basic mapping functions**  

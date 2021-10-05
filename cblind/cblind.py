@@ -9,7 +9,7 @@ from matplotlib import cm
 
 from rich import print as rprint
 
-PALETTES = ("rbscale", "rainbow", "huescale", "solstice", "bird", "pregunta", "iris")
+PALETTES = ("cb.rbscale", "cb.rainbow", "cb.huescale", "cb.solstice", "cb.bird", "cb.pregunta", "cb.iris")
 PALETTES_FULL = (*PALETTES,*tuple([i+"_r" for i in PALETTES]))
 
 STYLES = {
@@ -331,20 +331,20 @@ def _get_cbmap(palette, nbin=None):
     if palette[-2:]=="_r":
         palette_tmp = palette[:-2]
 
-    if palette_tmp=="rbscale":
+    if palette_tmp=="cb.rbscale":
         red=0.237-2.13*x+26.92*x**2-65.5*x**3+63.5*x**4-22.36*x**5
         green=((0.572+1.524*x-1.811*x**2)/(1.-0.291*x+0.1574*x**2))**2
         blue=(1./(1.579-4.03*x+12.92*x**2-31.4*x**3+48.6*x**4-23.36*x**5))
-    elif palette_tmp=='rainbow':
+    elif palette_tmp=='cb.rainbow':
         red = (0.472-0.567*x+4.05*x**2)/(1.+8.72*x-19.17*x**2+14.1*x**3)
         green = 0.108932-1.22635*x+27.284*x**2-98.577*x**3+163.3*x**4-131.395*x**5+40.634*x**6
         blue = 1./(1.97+3.54*x-68.5*x**2+243*x**3-297*x**4+125*x**5)
-    elif palette_tmp=='huescale':
+    elif palette_tmp=='cb.huescale':
         red = 1.-0.392*(1.+ss.erf((x-0.869)/0.255))
         green = 1.021-0.456*(1.+ss.erf((x-0.527)/0.376))
         blue = 1.-0.493*(1.+ss.erf((x-0.272)/0.309))
 
-    if palette_tmp=="rbscale" or palette_tmp=="rainbow" or palette_tmp=="huescale":
+    if palette_tmp=="cb.rbscale" or palette_tmp=="cb.rainbow" or palette_tmp=="cb.huescale":
         redline=[]
         greenline=[]
         blueline=[]
@@ -358,13 +358,13 @@ def _get_cbmap(palette, nbin=None):
                  'blue': blueline}
 
         cbcmap = mcolors.LinearSegmentedColormap(f"{palette_tmp}", cdict, N=nbin)
-    elif palette_tmp=="solstice":
+    elif palette_tmp=="cb.solstice":
         cbcmap = mcolors.LinearSegmentedColormap.from_list(f"{palette_tmp}", Colorplots().solstice(11)[0], N=nbin)
-    elif palette_tmp=="bird":
+    elif palette_tmp=="cb.bird":
         cbcmap = mcolors.LinearSegmentedColormap.from_list(f"{palette_tmp}", Colorplots().bird(9)[0], N=nbin)
-    elif palette_tmp=="pregunta":
+    elif palette_tmp=="cb.pregunta":
         cbcmap = mcolors.LinearSegmentedColormap.from_list(f"{palette_tmp}", Colorplots().pregunta(9)[0], N=nbin)
-    elif palette_tmp=="iris":
+    elif palette_tmp=="cb.iris":
         cmap_iris = ["#FEFBE9", "#FCF7D5", "#F5F3C1", "#EAF0B5", "#DDECBF", "#D0E7CA", "#C2E3D2", "#B5DDD8", "#A8D8DC", "#9BD2E1", "#8DCBE4", "#81C4E7", "#7BBCE7", "#7EB2E4", "#88A5DD", "#9398D2", "#9B8AC4", "#9D7DB2", "#9A709E", "#906388", "#805770", "#684957", "#46353A"]
         cbcmap = mcolors.LinearSegmentedColormap.from_list(f"{palette_tmp}", cmap_iris, N=nbin)
     if palette[-2:]=="_r":
