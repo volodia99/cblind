@@ -9,7 +9,7 @@ from matplotlib import cm
 
 from rich import print as rprint
 
-PALETTES = ("cb.rbscale", "cb.rainbow", "cb.huescale", "cb.solstice", "cb.bird", "cb.pregunta", "cb.iris")
+PALETTES = ("cb.rbscale", "cb.rainbow", "cb.huescale", "cb.solstice", "cb.bird", "cb.pregunta", "cb.iris", "cb.extreme_rainbow")
 PALETTES_FULL = (*PALETTES,*tuple([i+"_r" for i in PALETTES]))
 
 STYLES = {
@@ -30,6 +30,75 @@ STYLES = {
     "densely_dashdotdotted" : (0, (3, 1, 1, 1, 1, 1)),
     "loosely_dashdotdotted" : (0, (3, 10, 1, 10, 1, 10)),
 }
+
+c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18,c19,c20,c21,c22,c23,c24,c25,c26,c27,c28,c29 = (
+    '#E8ECFB', 
+    '#D9CCE3', 
+    '#D1BBD7', 
+    '#CAACCB', 
+    '#BA8DB4', 
+    '#AE76A3', 
+    '#AA6F9E', 
+    '#994F88', 
+    '#882E72', 
+    '#1965B0', 
+    '#437DBF', 
+    '#5289C7', 
+    '#6195CF', 
+    '#7BAFDE', 
+    '#4EB265', 
+    '#90C987', 
+    '#CAE0AB', 
+    '#F7F056', 
+    '#F7CB45', 
+    '#F6C141', 
+    '#F4A736', 
+    '#F1932D', 
+    '#EE8026', 
+    '#E8601C', 
+    '#E65518', 
+    '#DC050C', 
+    '#A5170E', 
+    '#72190E', 
+    '#42150A',
+)
+
+d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12,d13,d14,d15,d16,d17,d18,d19,d20,d21,d22,d23,d24,d25,d26,d27,d28,d29,d30,d31,d32,d33,d34 = (
+    '#E8ECFB', 
+    '#DDD8EF', 
+    '#D1C1E1', 
+    '#C3A8D1', 
+    '#B58FC2', 
+    '#A778B4', 
+    '#9B62A7', 
+    '#8C4E99', 
+    '#6F4C9B', 
+    '#6059A9', 
+    '#5568B8', 
+    '#4E79C5', 
+    '#4D8AC6', 
+    '#4E96BC', 
+    '#549EB3', 
+    '#59A5A9', 
+    '#60AB9E', 
+    '#69B190', 
+    '#77B77D', 
+    '#8CBC68', 
+    '#A6BE54', 
+    '#BEBC48', 
+    '#D1B541', 
+    '#DDAA3C', 
+    '#E49C39', 
+    '#E78C35', 
+    '#E67932', 
+    '#E4632D', 
+    '#DF4828', 
+    '#DA2222', 
+    '#B8221E', 
+    '#95211B', 
+    '#721E17', 
+    '#521A13',
+)
 
 def print_warn(message):
     """
@@ -217,6 +286,88 @@ class Colorplots:
             print_warn("out of range [4-12]: coloblind mode deactivated")
         return(colorscheme, stylescheme)
 
+    def extreme_rainbow(self, ncurves):
+        stylescheme = [STYLES["solid"]]*ncurves
+        prop_cycle=plt.rcParams['axes.prop_cycle']
+        clist=prop_cycle.by_key()['color']
+
+        if(ncurves==1):
+            colorscheme = [c10]
+            plt.rcParams['axes.prop_cycle'] = cycler('color', colorscheme)
+        elif(ncurves==2):
+            colorscheme = [c10,c26]
+            plt.rcParams['axes.prop_cycle'] = cycler('color', colorscheme)
+        elif(ncurves==3):
+            colorscheme = [c10,c18,c26]
+            plt.rcParams['axes.prop_cycle'] = cycler('color', colorscheme)
+        elif(ncurves==4):
+            colorscheme = [c10,c15,c18,c26]
+            plt.rcParams['axes.prop_cycle'] = cycler('color', colorscheme)
+        elif(ncurves==5):
+            colorscheme = [c10,c14,c15,c18,c26]
+            plt.rcParams['axes.prop_cycle'] = cycler('color', colorscheme)
+        elif(ncurves==6):
+            colorscheme = [c10,c14,c15,c17,c18,c26]
+            plt.rcParams['axes.prop_cycle'] = cycler('color', colorscheme)
+        elif(ncurves==7):
+            colorscheme = [c9,c10,c14,c15,c17,c18,c26]
+            plt.rcParams['axes.prop_cycle'] = cycler('color', colorscheme)
+        elif(ncurves==8):
+            colorscheme = [c9,c10,c14,c15,c17,c18,c23,c26]
+            plt.rcParams['axes.prop_cycle'] = cycler('color', colorscheme)
+        elif(ncurves==9):
+            colorscheme = [c9,c10,c14,c15,c17,c18,c23,c26,c28]
+            plt.rcParams['axes.prop_cycle'] = cycler('color', colorscheme)
+        elif(ncurves==10):
+            colorscheme = [c9,c10,c14,c15,c17,c18,c21,c24,c26,c28]
+            plt.rcParams['axes.prop_cycle'] = cycler('color', colorscheme)
+        elif(ncurves==11):
+            colorscheme = [c9,c10,c12,c14,c15,c17,c18,c21,c24,c26,c28]
+            plt.rcParams['axes.prop_cycle'] = cycler('color', colorscheme)
+        elif(ncurves==12):
+            colorscheme = [c3,c6,c9,c10,c12,c14,c15,c17,c18,c21,c24,c26]
+            plt.rcParams['axes.prop_cycle'] = cycler('color', colorscheme)
+        elif(ncurves==13):
+            colorscheme = [c3,c6,c9,c10,c12,c14,c15,c16,c17,c18,c21,c24,c26]
+            plt.rcParams['axes.prop_cycle'] = cycler('color', colorscheme)
+        elif(ncurves==14):
+            colorscheme = [c3,c6,c9,c10,c12,c14,c15,c16,c17,c18,c20,c22,c24,c26]
+            plt.rcParams['axes.prop_cycle'] = cycler('color', colorscheme)
+        elif(ncurves==15):
+            colorscheme = [c3,c6,c9,c10,c12,c14,c15,c16,c17,c18,c20,c22,c24,c26,c28]
+            plt.rcParams['axes.prop_cycle'] = cycler('color', colorscheme)
+        elif(ncurves==16):
+            colorscheme = [c3,c5,c7,c9,c10,c12,c14,c15,c16,c17,c18,c20,c22,c24,c26,c28]
+            plt.rcParams['axes.prop_cycle'] = cycler('color', colorscheme)
+        elif(ncurves==17):
+            colorscheme = [c3,c5,c7,c8,c9,c10,c12,c14,c15,c16,c17,c18,c20,c22,c24,c26,c28]
+            plt.rcParams['axes.prop_cycle'] = cycler('color', colorscheme)
+        elif(ncurves==18):
+            colorscheme = [c3,c5,c7,c8,c9,c10,c12,c14,c15,c16,c17,c18,c20,c22,c24,c26,c27,c28]
+            plt.rcParams['axes.prop_cycle'] = cycler('color', colorscheme)
+        elif(ncurves==19):
+            colorscheme = [c2,c4,c5,c7,c8,c9,c10,c12,c14,c15,c16,c17,c18,c20,c22,c24,c26,c27,c28]
+            plt.rcParams['axes.prop_cycle'] = cycler('color', colorscheme)
+        elif(ncurves==20):
+            colorscheme = [c2,c4,c5,c7,c8,c9,c10,c11,c13,c14,c15,c16,c17,c18,c20,c22,c24,c26,c27,c28]
+            plt.rcParams['axes.prop_cycle'] = cycler('color', colorscheme)
+        elif(ncurves==21):
+            colorscheme = [c2,c4,c5,c7,c8,c9,c10,c11,c13,c14,c15,c16,c17,c18,c19,c21,c23,c25,c26,c27,c28]
+            plt.rcParams['axes.prop_cycle'] = cycler('color', colorscheme)
+        elif(ncurves==22):
+            colorscheme = [c2,c4,c5,c7,c8,c9,c10,c11,c13,c14,c15,c16,c17,c18,c19,c21,c23,c25,c26,c27,c28,c29]
+            plt.rcParams['axes.prop_cycle'] = cycler('color', colorscheme)
+        elif(ncurves==23):
+            colorscheme = [c1,c2,c4,c5,c7,c8,c9,c10,c11,c13,c14,c15,c16,c17,c18,c19,c21,c23,c25,c26,c27,c28,c29]
+            plt.rcParams['axes.prop_cycle'] = cycler('color', colorscheme)
+        elif(ncurves==34):
+            colorscheme = [d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12,d13,d14,d15,d16,d17,d18,d19,d20,d21,d22,d23,d24,d25,d26,d27,d28,d29,d30,d31,d32,d33,d34]
+            plt.rcParams['axes.prop_cycle'] = cycler('color', colorscheme)
+        else:
+            colorscheme = clist
+            print_warn("out of range [1-34]: coloblind mode deactivated")
+        return(colorscheme, stylescheme)
+
     def solstice(self, ncurves):
         stylescheme = [STYLES["solid"]]*ncurves
         prop_cycle=plt.rcParams['axes.prop_cycle']
@@ -358,6 +509,8 @@ def _get_cbmap(palette, nbin=None):
                  'blue': blueline}
 
         cbcmap = mcolors.LinearSegmentedColormap(f"{palette_tmp}", cdict, N=nbin)
+    elif palette_tmp=="cb.extreme_rainbow":
+        cbcmap = mcolors.LinearSegmentedColormap.from_list(f"{palette_tmp}", Colorplots().extreme_rainbow(34)[0], N=nbin)
     elif palette_tmp=="cb.solstice":
         cbcmap = mcolors.LinearSegmentedColormap.from_list(f"{palette_tmp}", Colorplots().solstice(11)[0], N=nbin)
     elif palette_tmp=="cb.bird":
@@ -492,6 +645,21 @@ def test_rainbow(ny):
     x=np.linspace(0,10, nx)
     y=np.zeros((ny,nx), dtype=int)
     color, linestyle = Colorplots().rainbow(ny)
+
+    fig, ax = plt.subplots()
+    for i in range(ny):
+        for j in range(nx):
+            y[i][j]=x[j]+i
+        # plt.plot(x,y[i], color[i], linewidth=2.0)
+        ax.plot(x,y[i], linewidth=2.0)
+
+    plt.show()
+
+def test_extreme_rainbow(ny):
+    nx=100
+    x=np.linspace(0,10, nx)
+    y=np.zeros((ny,nx), dtype=int)
+    color, linestyle = Colorplots().extreme_rainbow(ny)
 
     fig, ax = plt.subplots()
     for i in range(ny):
