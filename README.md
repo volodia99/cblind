@@ -1,4 +1,5 @@
 # colorblind
+[![PyPI](https://img.shields.io/pypi/v/cblind)](https://pypi.org/project/cblind/)
 
 A colorblind-friendly python module that allows optimal color choice for plotting multiple curves  
 Works only with python 3  
