@@ -66,6 +66,8 @@ from 1 to 9 plots [SEQUENTIAL DATA]. With option "blue","bluegreen","green", "go
 cb.test_huescale(nb_of_plots, *option)
 ```
 
+![huescale](https://github.com/Volodia99/cblind/raw/master/imgs/huescale.png)
+
 ### rbscale
 
 ```python
