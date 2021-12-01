@@ -38,6 +38,8 @@ from 1 to 12 plots [DISTINCT COLORS]. For more than 12 plots, the linestyle is c
 cb.test_cblind(nb_of_plots)
 ```
 
+![cblind](https://github.com/Volodia99/cblind/raw/master/imgs/cblind.png)
+
 ### contrast
 
 ```python
@@ -49,6 +51,8 @@ for less than 4 contrast plots [DISTINCT COLORS]. For more than 12 plots, the li
 ```python
 cb.test_contrast(nb_of_plots)
 ```
+
+![contrast](https://github.com/Volodia99/cblind/raw/master/imgs/contrast.png)
 
 ### huescale
 
@@ -62,6 +66,15 @@ from 1 to 9 plots [SEQUENTIAL DATA]. With option "blue","bluegreen","green", "go
 cb.test_huescale(nb_of_plots, *option)
 ```
 
+![ocherscale](https://github.com/Volodia99/cblind/raw/master/imgs/ocherscale.png)
+![blue](https://github.com/Volodia99/cblind/raw/master/imgs/blue.png)
+![bluegreen](https://github.com/Volodia99/cblind/raw/master/imgs/bluegreen.png)
+![green](https://github.com/Volodia99/cblind/raw/master/imgs/green.png)
+![gold](https://github.com/Volodia99/cblind/raw/master/imgs/gold.png)
+![brown](https://github.com/Volodia99/cblind/raw/master/imgs/brown.png)
+![rose](https://github.com/Volodia99/cblind/raw/master/imgs/rose.png)
+![purple](https://github.com/Volodia99/cblind/raw/master/imgs/purple.png)
+
 ### rbscale
 
 ```python
@@ -73,6 +86,8 @@ from 3 to 11 plots [DIVERGING DATA].
 ```python
 cb.test_rbscale(nb_of_plots)
 ```
+
+![rbscale](https://github.com/Volodia99/cblind/raw/master/imgs/rbscale.png)
 
 ### rainbow
 
@@ -86,6 +101,8 @@ from 4 to 12 plots [RAINBOW SCHEME].
 cb.test_rainbow(nb_of_plots)
 ```
 
+![rainbow](https://github.com/Volodia99/cblind/raw/master/imgs/rainbow.png)
+
 ### extreme_rainbow
 
 ```python
@@ -97,6 +114,8 @@ from 1 to 34 plots [RAINBOW SCHEME].
 ```python
 cb.test_extreme_rainbow(nb_of_plots)
 ```
+
+![extreme_rainbow](https://github.com/Volodia99/cblind/raw/master/imgs/extreme_rainbow.png)
 
 ### solstice
 
@@ -110,6 +129,8 @@ for less than 11 plots [DIVERGING DATA]
 cb.test_solstice(nb_of_plots)
 ```
 
+![solstice](https://github.com/Volodia99/cblind/raw/master/imgs/solstice.png)
+
 ### bird
 
 ```python
@@ -121,6 +142,8 @@ for less than 9 plots [DIVERGING DATA]
 ```python
 cb.test_bird(nb_of_plots)
 ```
+
+![bird](https://github.com/Volodia99/cblind/raw/master/imgs/bird.png)
 
 ### pregunta
 
@@ -134,6 +157,8 @@ for less than 9 plots [DIVERGING DATA]
 cb.test_pregunta(nb_of_plots)
 ```
 
+![pregunta](https://github.com/Volodia99/cblind/raw/master/imgs/pregunta.png)
+
 ### monocolor
 
 ```python
@@ -145,6 +170,8 @@ from 1 to 13 monochromatic plots [MONOCOLOR/PRINTING] with different linestyles.
 ```python
 cb.test_monocolor(nb_of_plots, *option)
 ```
+
+![monocolor](https://github.com/Volodia99/cblind/raw/master/imgs/monocolor.png)
 
 ## Usage for colormaps
 
