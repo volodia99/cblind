@@ -184,7 +184,7 @@ cmap = cb.cbmap(palette, nbin)
 
 The `nbin` argument is used to discretize the colormaps.  
 
-![Colormaps](https://github.com/Volodia99/cblind/raw/master/imgs/colormaps.png)
+![colormaps](https://github.com/Volodia99/cblind/raw/master/imgs/colormaps.png)
 
 To test the colormaps, you can try:
 
