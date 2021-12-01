@@ -1,10 +1,10 @@
 # cblind
 [![PyPI](https://img.shields.io/pypi/v/cblind)](https://pypi.org/project/cblind/)
 
-A colorblind-friendly python module that allows optimal color choice for plotting multiple curves  
+A colorblind-friendly python module that allows color choice for plotting multiple curves  
 Works only with python 3  
-3 optimal colormaps are now available to map 2D fields  
-Version: 2.2.2
+8 colormaps are now available to map 2D fields  
+Version: 2.2.3
 Author: Gaylor Wafflard-Fernandez  
 Author-email: gaylor.wafflard@univ-grenoble-alpes.fr
 
