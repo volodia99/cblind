@@ -5,7 +5,6 @@ import numpy as np
 import scipy.special as ss
 import matplotlib.pyplot as plt
 from matplotlib import colors as mcolors
-from matplotlib import cm
 
 from rich import print as rprint
 
@@ -497,7 +496,7 @@ def _get_cbmap(palette, nbin=None):
 
 def cbmap(palette=None, nbin=None):
     if palette not in PALETTES_FULL:
-        palette = cm.get_cmap(palette, nbin)
+        palette = plt.get_cmap(palette, nbin)
     else:
         palette = _get_cbmap(palette, nbin)
     return palette
