@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "cblind"
-version = "2.2.3"
+version = "2.2.4"
 description = "Color schemes for Python plots, from Paul Tol (2012)"
 authors = [
     { name = "G. Wafflard-Fernandez" },
