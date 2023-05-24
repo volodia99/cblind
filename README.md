@@ -4,7 +4,7 @@
 A colorblind-friendly python module that allows color choice for plotting multiple curves  
 Works only with python 3  
 8 colormaps are now available to map 2D fields  
-Version: 2.2.3
+Version: 2.2.4
 Author: Gaylor Wafflard-Fernandez  
 Author-email: gaylor.wafflard@univ-grenoble-alpes.fr
 
