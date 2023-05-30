@@ -5,7 +5,7 @@ import numpy as np
 import scipy.special as ss
 import matplotlib.pyplot as plt
 from matplotlib import colors as mcolors
-
+from matplotlib import colormaps as mcm
 from rich import print as rprint
 
 PALETTES = ("cb.rbscale", "cb.rainbow", "cb.huescale", "cb.solstice", "cb.bird", "cb.pregunta", "cb.iris", "cb.extreme_rainbow")
@@ -440,9 +440,18 @@ def reversed_cmap(cmap, name = 'my_cmap_r', nbin=None):
     my_cmap_r = mcolors.LinearSegmentedColormap(name, LinearL, N=nbin) 
     return my_cmap_r
 
-def _get_cbmap(palette, nbin=None):
-    if nbin is None:
-        nbin=256
+
+_REGISTERED = set()
+def _register_to_mpl(name):
+    if name in _REGISTERED:
+        return
+    cbcmap = _get_cbmap(name)
+
+    mcm.register(cbcmap)
+    mcm.register(cbcmap.reversed())
+    _REGISTERED.add(name)
+
+def _get_cbmap(palette, nbin=256):
     x=np.linspace(0.,1.,nbin)
     if palette not in PALETTES_FULL:
         raise NotImplementedError(
