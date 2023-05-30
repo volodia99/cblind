@@ -19,7 +19,7 @@ classifiers = [
 ]
 requires-python = ">=3.6"
 dependencies = [
-    "matplotlib",
+    "matplotlib>=3.5",
     "numpy",
     "rich",
     "scipy",
