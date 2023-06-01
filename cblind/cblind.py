@@ -419,6 +419,12 @@ class Colorplots:
         return(colorscheme,stylescheme)
 
 def reversed_cmap(cmap, name = 'my_cmap_r', nbin=None):
+    warn(
+        "cblind.reversed_cmap(cm, ...) is deprecated. "
+        "Please use cm.reversed() instead. ",
+        category=DeprecationWarning,
+        stacklevel=2,
+    )
     if nbin is None:
         nbin=256
     reverse = []                  
@@ -505,7 +511,7 @@ def _get_cbmap(palette, nbin=256):
         cmap_iris = ["#FEFBE9", "#FCF7D5", "#F5F3C1", "#EAF0B5", "#DDECBF", "#D0E7CA", "#C2E3D2", "#B5DDD8", "#A8D8DC", "#9BD2E1", "#8DCBE4", "#81C4E7", "#7BBCE7", "#7EB2E4", "#88A5DD", "#9398D2", "#9B8AC4", "#9D7DB2", "#9A709E", "#906388", "#805770", "#684957", "#46353A"]
         cbcmap = mcolors.LinearSegmentedColormap.from_list(f"{palette_tmp}", cmap_iris, N=nbin)
     if palette[-2:]=="_r":
-        cbcmap = reversed_cmap(cbcmap, name=f"{palette}_r", nbin=nbin)
+        cbcmap = cbcmap.reversed()
     return(cbcmap)
 
 def cbmap(palette=None, nbin=None):
