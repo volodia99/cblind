@@ -3,7 +3,7 @@ from cycler import cycler
 
 import numpy as np
 import scipy.special as ss
-import matplotlib.pyplot as plt
+import matplotlib as mpl
 from matplotlib import colors as mcolors
 from matplotlib import colormaps as mcm
 from rich import print as rprint
@@ -110,7 +110,7 @@ class Colorplots:
     def cblind(self, ncurves):
         stylescheme = [STYLES[key] for key in list(STYLES.keys())]
         # stylescheme = [STYLES["solid"]]*ncurves
-        prop_cycle = plt.rcParams['axes.prop_cycle']
+        prop_cycle = mpl.rcParams['axes.prop_cycle']
         clist = prop_cycle.by_key()['color']
         if(ncurves<=4):
             colorscheme = ['#4477AA','#CC6677','#DDCC77','#117733']
@@ -122,12 +122,12 @@ class Colorplots:
         else:
             colorscheme = clist
             print_warn("out of range [1-156]: coloblind mode deactivated")
-        plt.rcParams['axes.prop_cycle'] = cycler('linestyle', stylescheme[0:ncurves])*cycler('color', colorscheme[0:ncurves])
+        mpl.rcParams['axes.prop_cycle'] = cycler('linestyle', stylescheme[0:ncurves])*cycler('color', colorscheme[0:ncurves])
         return(colorscheme, stylescheme)
 
     def contrast(self, ncurves):
         stylescheme = [STYLES[key] for key in list(STYLES.keys())]
-        prop_cycle = plt.rcParams['axes.prop_cycle']
+        prop_cycle = mpl.rcParams['axes.prop_cycle']
         clist = prop_cycle.by_key()['color']
         if(ncurves<=4):
             colorscheme = ['#000000','#004488','#BB5566','#DDAA33']
@@ -137,14 +137,14 @@ class Colorplots:
         else:
             colorscheme = clist
             print_warn("out of range [1-52]: coloblind mode deactivated")
-        plt.rcParams['axes.prop_cycle'] = cycler('linestyle', stylescheme[0:ncurves])*cycler('color', colorscheme[0:ncurves])
+        mpl.rcParams['axes.prop_cycle'] = cycler('linestyle', stylescheme[0:ncurves])*cycler('color', colorscheme[0:ncurves])
         return(colorscheme, stylescheme)
 
     def huescale(self, ncurves, *args):
         stylescheme = [STYLES[key] for key in list(STYLES.keys())]
         # stylescheme = [STYLES["solid"]]*ncurves
         #SET DEFAULT VALUES IF NO OPTIONAL ARGUMENT
-        prop_cycle = plt.rcParams['axes.prop_cycle']
+        prop_cycle = mpl.rcParams['axes.prop_cycle']
         clist = prop_cycle.by_key()['color']
         hue = "None"
         #OPTIONS
@@ -174,7 +174,7 @@ class Colorplots:
                 colorscheme = ['#771155','#AA4488','#CC99BB']
             if hue=='None':
                 colorscheme = ['#D95F0E','#FEC44F','#FFF7BC']
-            plt.rcParams['axes.prop_cycle'] = cycler('linestyle', stylescheme[0:ncurves])*cycler('color', colorscheme[0:ncurves])
+            mpl.rcParams['axes.prop_cycle'] = cycler('linestyle', stylescheme[0:ncurves])*cycler('color', colorscheme[0:ncurves])
 
 
         if(ncurves==4):
@@ -194,13 +194,13 @@ class Colorplots:
         if(ncurves>9):
             colorscheme = clist
             print_warn("out of range [1-9]: coloblind mode deactivated")
-        plt.rcParams['axes.prop_cycle'] = cycler('linestyle', stylescheme[0:ncurves])*cycler('color', colorscheme[0:ncurves])
+        mpl.rcParams['axes.prop_cycle'] = cycler('linestyle', stylescheme[0:ncurves])*cycler('color', colorscheme[0:ncurves])
         return(colorscheme, stylescheme)
 
     def rbscale(self, ncurves):
         stylescheme = [STYLES[key] for key in list(STYLES.keys())]
         # stylescheme = [STYLES["solid"]]*ncurves
-        prop_cycle=plt.rcParams['axes.prop_cycle']
+        prop_cycle=mpl.rcParams['axes.prop_cycle']
         clist=prop_cycle.by_key()['color']
 
         if(ncurves==3):
@@ -227,13 +227,13 @@ class Colorplots:
         else:
             colorscheme = clist
             print_warn("out of range [3-11]: coloblind mode deactivated")
-        plt.rcParams['axes.prop_cycle'] = cycler('linestyle', stylescheme[0:ncurves])*cycler('color', colorscheme[0:ncurves])
+        mpl.rcParams['axes.prop_cycle'] = cycler('linestyle', stylescheme[0:ncurves])*cycler('color', colorscheme[0:ncurves])
         return(colorscheme, stylescheme)
 
     def rainbow(self, ncurves):
         stylescheme = [STYLES[key] for key in list(STYLES.keys())]
         # stylescheme = [STYLES["solid"]]*ncurves
-        prop_cycle=plt.rcParams['axes.prop_cycle']
+        prop_cycle=mpl.rcParams['axes.prop_cycle']
         clist=prop_cycle.by_key()['color']
 
         if(ncurves==4):
@@ -260,13 +260,13 @@ class Colorplots:
         else:
             colorscheme = clist
             print_warn("out of range [4-12]: coloblind mode deactivated")
-        plt.rcParams['axes.prop_cycle'] = cycler('linestyle', stylescheme[0:ncurves])*cycler('color', colorscheme[0:ncurves])
+        mpl.rcParams['axes.prop_cycle'] = cycler('linestyle', stylescheme[0:ncurves])*cycler('color', colorscheme[0:ncurves])
         return(colorscheme, stylescheme)
 
     def extreme_rainbow(self, ncurves):
         stylescheme = [STYLES[key] for key in list(STYLES.keys())]
         # stylescheme = [STYLES["solid"]]*ncurves
-        prop_cycle=plt.rcParams['axes.prop_cycle']
+        prop_cycle=mpl.rcParams['axes.prop_cycle']
         clist=prop_cycle.by_key()['color']
 
         if(ncurves==1):
@@ -323,13 +323,13 @@ class Colorplots:
         else:
             colorscheme = clist
             print_warn("out of range [1-34]: coloblind mode deactivated")
-        plt.rcParams['axes.prop_cycle'] = cycler('linestyle', stylescheme[0:ncurves])*cycler('color', colorscheme[0:ncurves])
+        mpl.rcParams['axes.prop_cycle'] = cycler('linestyle', stylescheme[0:ncurves])*cycler('color', colorscheme[0:ncurves])
         return(colorscheme, stylescheme)
 
     def solstice(self, ncurves):
         stylescheme = [STYLES[key] for key in list(STYLES.keys())]
         # stylescheme = [STYLES["solid"]]*ncurves
-        prop_cycle=plt.rcParams['axes.prop_cycle']
+        prop_cycle=mpl.rcParams['axes.prop_cycle']
         clist=prop_cycle.by_key()['color']
         if(ncurves<=11):
             colorscheme = ['#364B9A','#4A7BB7','#6EA6CD','#98CAE1','#C2E4EF','#EAECCC','#FEDA8B','#FDB366','#F67E4B','#DD3D2D','#A50026']
@@ -339,13 +339,13 @@ class Colorplots:
         else:
             colorscheme = clist
             print_warn("out of range [1-11]: coloblind mode deactivated")
-        plt.rcParams['axes.prop_cycle'] = cycler('linestyle', stylescheme[0:ncurves])*cycler('color', colorscheme[0:ncurves])
+        mpl.rcParams['axes.prop_cycle'] = cycler('linestyle', stylescheme[0:ncurves])*cycler('color', colorscheme[0:ncurves])
         return(colorscheme, stylescheme)
 
     def bird(self, ncurves):
         stylescheme = [STYLES[key] for key in list(STYLES.keys())]
         # stylescheme = [STYLES["solid"]]*ncurves
-        prop_cycle=plt.rcParams['axes.prop_cycle']
+        prop_cycle=mpl.rcParams['axes.prop_cycle']
         clist=prop_cycle.by_key()['color']
         if(ncurves<=9):
             colorscheme = ['#2166AC','#4393C3','#92C5DE','#D1E5F0','#F7F7F7','#FDDBC7','#F4A582','#D6604D','#B2182B']
@@ -355,13 +355,13 @@ class Colorplots:
         else:
             colorscheme = clist
             print_warn("out of range [1-9]: coloblind mode deactivated")
-        plt.rcParams['axes.prop_cycle'] = cycler('linestyle', stylescheme[0:ncurves])*cycler('color', colorscheme[0:ncurves])
+        mpl.rcParams['axes.prop_cycle'] = cycler('linestyle', stylescheme[0:ncurves])*cycler('color', colorscheme[0:ncurves])
         return(colorscheme, stylescheme)
 
     def pregunta(self, ncurves):
         stylescheme = [STYLES[key] for key in list(STYLES.keys())]
         # stylescheme = [STYLES["solid"]]*ncurves
-        prop_cycle=plt.rcParams['axes.prop_cycle']
+        prop_cycle=mpl.rcParams['axes.prop_cycle']
         clist=prop_cycle.by_key()['color']
         if(ncurves<=9):
             colorscheme = ['#762A83','#9970AB','#C2A5CF','#E7D4E8','#F7F7F7','#D9F0D3','#ACD39E','#5AAE61','#1B7837']
@@ -371,7 +371,7 @@ class Colorplots:
         else:
             colorscheme = clist
             print_warn("out of range [1-9]: coloblind mode deactivated")
-        plt.rcParams['axes.prop_cycle'] = cycler('linestyle', stylescheme[0:ncurves])*cycler('color', colorscheme[0:ncurves])
+        mpl.rcParams['axes.prop_cycle'] = cycler('linestyle', stylescheme[0:ncurves])*cycler('color', colorscheme[0:ncurves])
         return(colorscheme, stylescheme)
 
     def monocolor(self, ncurves, *args):
@@ -419,7 +419,7 @@ class Colorplots:
                 stylescheme = stylescheme*int(np.ceil(ncurves/13))
             stylescheme = stylescheme[0:ncurves]
             default_cycler=(cycler(color=colorscheme)+cycler(linestyle=stylescheme))
-            plt.rc('axes', prop_cycle=default_cycler)
+            mpl.rc('axes', prop_cycle=default_cycler)
         return(colorscheme,stylescheme)
 
 def reversed_cmap(cmap, name = 'my_cmap_r', nbin=None):
@@ -505,16 +505,22 @@ def _get_cbmap(palette, nbin=256):
 
 def cbmap(palette=None, nbin=None):
     if palette not in PALETTES_FULL:
-        palette = plt.get_cmap(palette, nbin)
+        if nbin is None:
+            return mcm.get_cmap(palette)
+        else:
+            import matplotlib.pyplot as plt
+
+            return plt.get_cmap(palette, nbin)
     else:
-        palette = _get_cbmap(palette, nbin)
-    return palette
+        return _get_cbmap(palette, nbin)
 
 def mapping(fig, ax, data2d, palette=None, nbin=None):
     im=ax.imshow(data2d, cmap=cbmap(palette=palette, nbin=nbin), aspect='auto')
     fig.colorbar(im)
 
 def test_cblind(ny):
+    import matplotlib.pyplot as plt
+
     nx=100
     x=np.linspace(0,10, nx)
     y=np.zeros((ny,nx), dtype=int)
@@ -530,6 +536,8 @@ def test_cblind(ny):
     plt.show()
 
 def test_contrast(ny):
+    import matplotlib.pyplot as plt
+
     nx=100
     x=np.linspace(0,10, nx)
     y=np.zeros((ny,nx), dtype=int)
@@ -545,6 +553,8 @@ def test_contrast(ny):
     plt.show()
 
 def test_huescale(ny, *args):
+    import matplotlib.pyplot as plt
+
     nx=100
     x=np.linspace(0,10, nx)
     y=np.zeros((ny,nx), dtype=int)
@@ -560,6 +570,8 @@ def test_huescale(ny, *args):
     plt.show()
 
 def test_rbscale(ny):
+    import matplotlib.pyplot as plt
+
     nx=100
     x=np.linspace(0,10, nx)
     y=np.zeros((ny,nx), dtype=int)
@@ -575,6 +587,8 @@ def test_rbscale(ny):
     plt.show()
 
 def test_solstice(ny):
+    import matplotlib.pyplot as plt
+
     nx=100
     x=np.linspace(0,10, nx)
     y=np.zeros((ny,nx), dtype=int)
@@ -590,6 +604,8 @@ def test_solstice(ny):
     plt.show()
 
 def test_bird(ny):
+    import matplotlib.pyplot as plt
+
     nx=100
     x=np.linspace(0,10, nx)
     y=np.zeros((ny,nx), dtype=int)
@@ -605,6 +621,8 @@ def test_bird(ny):
     plt.show()
 
 def test_pregunta(ny):
+    import matplotlib.pyplot as plt
+
     nx=100
     x=np.linspace(0,10, nx)
     y=np.zeros((ny,nx), dtype=int)
@@ -620,6 +638,8 @@ def test_pregunta(ny):
     plt.show()
 
 def test_rainbow(ny):
+    import matplotlib.pyplot as plt
+
     nx=100
     x=np.linspace(0,10, nx)
     y=np.zeros((ny,nx), dtype=int)
@@ -635,6 +655,8 @@ def test_rainbow(ny):
     plt.show()
 
 def test_extreme_rainbow(ny):
+    import matplotlib.pyplot as plt
+
     nx=100
     x=np.linspace(0,10, nx)
     y=np.zeros((ny,nx), dtype=int)
@@ -650,6 +672,8 @@ def test_extreme_rainbow(ny):
     plt.show()
 
 def test_monocolor(ny, *args):
+    import matplotlib.pyplot as plt
+
     nx=100
     x=np.linspace(0,10, nx)
     y=np.zeros((ny,nx), dtype=int)
@@ -665,6 +689,8 @@ def test_monocolor(ny, *args):
     plt.show()
 
 def test_mapping(palette=None,nbin=None):
+    import matplotlib.pyplot as plt
+
     fig, ax = plt.subplots()
 
     r = np.arange(-np.pi, np.pi, 0.1)
