@@ -1,12 +1,14 @@
 import sys
+from math import erf
+from warnings import warn
+
 from cycler import cycler
 
 import numpy as np
-import scipy.special as ss
 import matplotlib as mpl
 from matplotlib import colors as mcolors
 from matplotlib import colormaps as mcm
-from rich import print as rprint
+
 
 PALETTES = ("cb.rbscale", "cb.rainbow", "cb.huescale", "cb.solstice", "cb.bird", "cb.pregunta", "cb.iris", "cb.extreme_rainbow")
 PALETTES_FULL = (*PALETTES,*tuple([i+"_r" for i in PALETTES]))
@@ -99,12 +101,6 @@ d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12,d13,d14,d15,d16,d17,d18,d19,d20,d21,d22,d
     '#521A13',
 )
 
-def print_warn(message):
-    """
-    adapted from idefix_cli (cmt robert)
-    https://github.com/neutrinoceros/idefix_cli
-    """
-    rprint(f":eyes: [bold red]Warning[/] {message}", file=sys.stderr)
 
 class Colorplots:
     def cblind(self, ncurves):
@@ -118,10 +114,10 @@ class Colorplots:
             colorscheme = ['#332288','#88CCEE','#117733','#DDCC77','#CC6677','#AA4499','#44AA99','#999933','#882255','#661100','#6699CC','#AA4466']
         elif(ncurves>12 and ncurves<=156):
             colorscheme = ['#332288','#88CCEE','#117733','#DDCC77','#CC6677','#AA4499','#44AA99','#999933','#882255','#661100','#6699CC','#AA4466']
-            print_warn("out of range [1-12]: changed the linestyle")
+            warn("out of range [1-12]: changed the linestyle", stacklevel=2)
         else:
             colorscheme = clist
-            print_warn("out of range [1-156]: coloblind mode deactivated")
+            warn("out of range [1-156]: coloblind mode deactivated", stacklevel=2)
         mpl.rcParams['axes.prop_cycle'] = cycler('linestyle', stylescheme[0:ncurves])*cycler('color', colorscheme[0:ncurves])
         return(colorscheme, stylescheme)
 
@@ -133,10 +129,10 @@ class Colorplots:
             colorscheme = ['#000000','#004488','#BB5566','#DDAA33']
         elif(ncurves>4 and ncurves<=52):
             colorscheme = ['#000000','#004488','#BB5566','#DDAA33']
-            print_warn("out of range [1-4]: changed the linestyle")
+            warn("out of range [1-4]: changed the linestyle", stacklevel=2)
         else:
             colorscheme = clist
-            print_warn("out of range [1-52]: coloblind mode deactivated")
+            warn("out of range [1-52]: coloblind mode deactivated", stacklevel=2)
         mpl.rcParams['axes.prop_cycle'] = cycler('linestyle', stylescheme[0:ncurves])*cycler('color', colorscheme[0:ncurves])
         return(colorscheme, stylescheme)
 
@@ -190,10 +186,10 @@ class Colorplots:
         if(ncurves==9):
             colorscheme = ['#662506','#993404','#CC4C02','#EC7014','#FB9A29','#FEC44F','#FEE391','#FFF7BC','#FFFFE5']
         if(ncurves>3 and ncurves<=9 and hue!='None'):
-            print_warn("only ocherscale for more than 3 plots")
+            warn("only ocherscale for more than 3 plots", stacklevel=2)
         if(ncurves>9):
             colorscheme = clist
-            print_warn("out of range [1-9]: coloblind mode deactivated")
+            warn("out of range [1-9]: coloblind mode deactivated", stacklevel=2)
         mpl.rcParams['axes.prop_cycle'] = cycler('linestyle', stylescheme[0:ncurves])*cycler('color', colorscheme[0:ncurves])
         return(colorscheme, stylescheme)
 
@@ -223,10 +219,10 @@ class Colorplots:
             colorscheme = ['#3D52A1','#3A89C9','#77B7E5','#B4DDF7','#E6F5FE','#FFFAD2','#FFE3AA','#F9BD7E','#ED875E','#D24D3E','#AE1C3E']
         elif(ncurves>11 and ncurves<=143):
             colorscheme = ['#3D52A1','#3A89C9','#77B7E5','#B4DDF7','#E6F5FE','#FFFAD2','#FFE3AA','#F9BD7E','#ED875E','#D24D3E','#AE1C3E']
-            print_warn("out of range [3-11]: changed the linestyle")
+            warn("out of range [3-11]: changed the linestyle", stacklevel=2)
         else:
             colorscheme = clist
-            print_warn("out of range [3-11]: coloblind mode deactivated")
+            warn("out of range [3-11]: coloblind mode deactivated", stacklevel=2)
         mpl.rcParams['axes.prop_cycle'] = cycler('linestyle', stylescheme[0:ncurves])*cycler('color', colorscheme[0:ncurves])
         return(colorscheme, stylescheme)
 
@@ -256,10 +252,10 @@ class Colorplots:
             colorscheme = ['#781C81','#413B93','#4065B1','#488BC2','#55A1B1','#63AD99','#7FB972','#B5BD4C','#D9AD3C','#E68E34','#E6642C','#D92120']
         elif(ncurves>12 and ncurves<=156):
             colorscheme = ['#781C81','#413B93','#4065B1','#488BC2','#55A1B1','#63AD99','#7FB972','#B5BD4C','#D9AD3C','#E68E34','#E6642C','#D92120']
-            print_warn("out of range [4-12]: changed the linestyle")
+            warn("out of range [4-12]: changed the linestyle", stacklevel=2)
         else:
             colorscheme = clist
-            print_warn("out of range [4-12]: coloblind mode deactivated")
+            warn("out of range [4-12]: coloblind mode deactivated", stacklevel=2)
         mpl.rcParams['axes.prop_cycle'] = cycler('linestyle', stylescheme[0:ncurves])*cycler('color', colorscheme[0:ncurves])
         return(colorscheme, stylescheme)
 
@@ -319,10 +315,10 @@ class Colorplots:
             colorscheme = [d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12,d13,d14,d15,d16,d17,d18,d19,d20,d21,d22,d23,d24,d25,d26,d27,d28,d29,d30,d31,d32,d33,d34]
         elif(ncurves>34 and ncurves<=442):
             colorscheme = [d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12,d13,d14,d15,d16,d17,d18,d19,d20,d21,d22,d23,d24,d25,d26,d27,d28,d29,d30,d31,d32,d33,d34]
-            print_warn("out of range [1-34]: changed the linestyle")
+            warn("out of range [1-34]: changed the linestyle", stacklevel=2)
         else:
             colorscheme = clist
-            print_warn("out of range [1-34]: coloblind mode deactivated")
+            warn("out of range [1-34]: coloblind mode deactivated", stacklevel=2)
         mpl.rcParams['axes.prop_cycle'] = cycler('linestyle', stylescheme[0:ncurves])*cycler('color', colorscheme[0:ncurves])
         return(colorscheme, stylescheme)
 
@@ -335,10 +331,10 @@ class Colorplots:
             colorscheme = ['#364B9A','#4A7BB7','#6EA6CD','#98CAE1','#C2E4EF','#EAECCC','#FEDA8B','#FDB366','#F67E4B','#DD3D2D','#A50026']
         elif(ncurves>11 and ncurves<=143):
             colorscheme = ['#364B9A','#4A7BB7','#6EA6CD','#98CAE1','#C2E4EF','#EAECCC','#FEDA8B','#FDB366','#F67E4B','#DD3D2D','#A50026']
-            print_warn("out of range [1-11]: changed the linestyle")
+            warn("out of range [1-11]: changed the linestyle", stacklevel=2)
         else:
             colorscheme = clist
-            print_warn("out of range [1-11]: coloblind mode deactivated")
+            warn("out of range [1-11]: coloblind mode deactivated", stacklevel=2)
         mpl.rcParams['axes.prop_cycle'] = cycler('linestyle', stylescheme[0:ncurves])*cycler('color', colorscheme[0:ncurves])
         return(colorscheme, stylescheme)
 
@@ -351,10 +347,10 @@ class Colorplots:
             colorscheme = ['#2166AC','#4393C3','#92C5DE','#D1E5F0','#F7F7F7','#FDDBC7','#F4A582','#D6604D','#B2182B']
         elif(ncurves>9 and ncurves<=117):
             colorscheme = ['#2166AC','#4393C3','#92C5DE','#D1E5F0','#F7F7F7','#FDDBC7','#F4A582','#D6604D','#B2182B']
-            print_warn("out of range [1-9]: changed the linestyle")
+            warn("out of range [1-9]: changed the linestyle", stacklevel=2)
         else:
             colorscheme = clist
-            print_warn("out of range [1-9]: coloblind mode deactivated")
+            warn("out of range [1-9]: coloblind mode deactivated", stacklevel=2)
         mpl.rcParams['axes.prop_cycle'] = cycler('linestyle', stylescheme[0:ncurves])*cycler('color', colorscheme[0:ncurves])
         return(colorscheme, stylescheme)
 
@@ -367,10 +363,10 @@ class Colorplots:
             colorscheme = ['#762A83','#9970AB','#C2A5CF','#E7D4E8','#F7F7F7','#D9F0D3','#ACD39E','#5AAE61','#1B7837']
         elif(ncurves>9 and ncurves<=117):
             colorscheme = ['#762A83','#9970AB','#C2A5CF','#E7D4E8','#F7F7F7','#D9F0D3','#ACD39E','#5AAE61','#1B7837']
-            print_warn("out of range [1-9]: changed the linestyle")
+            warn("out of range [1-9]: changed the linestyle", stacklevel=2)
         else:
             colorscheme = clist
-            print_warn("out of range [1-9]: coloblind mode deactivated")
+            warn("out of range [1-9]: coloblind mode deactivated", stacklevel=2)
         mpl.rcParams['axes.prop_cycle'] = cycler('linestyle', stylescheme[0:ncurves])*cycler('color', colorscheme[0:ncurves])
         return(colorscheme, stylescheme)
 
@@ -415,7 +411,7 @@ class Colorplots:
                 STYLES["loosely_dashdotdotted"],
             ]
             if(ncurves>13):
-                print_warn("maximum 13 different linestyles")
+                warn("maximum 13 different linestyles", stacklevel=2)
                 stylescheme = stylescheme*int(np.ceil(ncurves/13))
             stylescheme = stylescheme[0:ncurves]
             default_cycler=(cycler(color=colorscheme)+cycler(linestyle=stylescheme))
@@ -451,6 +447,15 @@ def _register_to_mpl(name):
     mcm.register(cbcmap.reversed())
     _REGISTERED.add(name)
 
+def _erf_vector(arr):
+    # a simple substitute for scipy.special.erf
+    # performance is about 1/20 with respect to scipy impl
+    # but results are still obtained within well below 1ms for 256 elements
+    # which is the typical application
+    out = np.empty_like(arr)
+    out[:] = [erf(_) for _ in arr]
+    return out
+
 def _get_cbmap(palette, nbin=256):
     x=np.linspace(0.,1.,nbin)
     if palette not in PALETTES_FULL:
@@ -470,9 +475,9 @@ def _get_cbmap(palette, nbin=256):
         green = 0.108932-1.22635*x+27.284*x**2-98.577*x**3+163.3*x**4-131.395*x**5+40.634*x**6
         blue = 1./(1.97+3.54*x-68.5*x**2+243*x**3-297*x**4+125*x**5)
     elif palette_tmp=='cb.huescale':
-        red = 1.-0.392*(1.+ss.erf((x-0.869)/0.255))
-        green = 1.021-0.456*(1.+ss.erf((x-0.527)/0.376))
-        blue = 1.-0.493*(1.+ss.erf((x-0.272)/0.309))
+        red = 1.-0.392*(1.+_erf_vector((x-0.869)/0.255))
+        green = 1.021-0.456*(1.+_erf_vector((x-0.527)/0.376))
+        blue = 1.-0.493*(1.+_erf_vector((x-0.272)/0.309))
 
     if palette_tmp=="cb.rbscale" or palette_tmp=="cb.rainbow" or palette_tmp=="cb.huescale":
         redline=[]
