@@ -20,9 +20,8 @@ classifiers = [
 requires-python = ">=3.6"
 dependencies = [
     "matplotlib>=3.5",
+    "cycler",
     "numpy",
-    "rich",
-    "scipy",
 ]
 
 [project.readme]
