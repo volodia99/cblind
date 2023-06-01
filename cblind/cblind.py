@@ -509,6 +509,14 @@ def _get_cbmap(palette, nbin=256):
     return(cbcmap)
 
 def cbmap(palette=None, nbin=None):
+    warn(
+        "cblind.cbmap is deprecated. "
+        "Please use matplotlib.colormaps.get_cmap instead, or "
+        "matplotlib.pyplot.get_cmap if you need to specify nbin "
+        "(default is 256)",
+        category=DeprecationWarning,
+        stacklevel=2,
+    )
     if palette not in PALETTES_FULL:
         if nbin is None:
             return mcm.get_cmap(palette)
@@ -520,7 +528,14 @@ def cbmap(palette=None, nbin=None):
         return _get_cbmap(palette, nbin)
 
 def mapping(fig, ax, data2d, palette=None, nbin=None):
-    im=ax.imshow(data2d, cmap=cbmap(palette=palette, nbin=nbin), aspect='auto')
+    if nbin is None:
+        cmap = mcm.get_cmap(palette)
+    else:
+        import matplotlib.pyplot as plt
+
+        cmap = plt.get_cmap(palette, nbin)
+    
+    im=ax.imshow(data2d, cmap=cmap, aspect='auto')
     fig.colorbar(im)
 
 def test_cblind(ny):
