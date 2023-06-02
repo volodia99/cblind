@@ -480,13 +480,14 @@ def _get_cbmap(palette, nbin=256):
         blue = 1.-0.493*(1.+_erf_vector((x-0.272)/0.309))
 
     if palette_tmp=="cb.rbscale" or palette_tmp=="cb.rainbow" or palette_tmp=="cb.huescale":
-        redline=[]
-        greenline=[]
-        blueline=[]
-        for i in range(len(x)):
-            redline.append((x[i],red[i],red[i]))
-            greenline.append((x[i],green[i],green[i]))
-            blueline.append((x[i],blue[i],blue[i]))
+        redline = np.empty((len(x), 3))
+        greenline = np.empty((len(x), 3))
+        blueline = np.empty((len(x), 3))
+
+        redline[:, 0] = greenline[:, 0] = blueline[:, 0] = x
+        redline[:, 1] = redline[:, 2] = red
+        greenline[:, 1] = greenline[:, 2] = green
+        blueline[:, 1] = blueline[:, 2] = blue
 
         cdict = {'red':   redline,
                  'green': greenline,
