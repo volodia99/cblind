@@ -9,7 +9,19 @@ from matplotlib import cm
 
 from rich import print as rprint
 
-PALETTES = ("cb.rbscale", "cb.rainbow", "cb.huescale", "cb.solstice", "cb.bird", "cb.pregunta", "cb.iris", "cb.extreme_rainbow")
+PALETTES = (
+    "cb.rbscale", 
+    "cb.rainbow", 
+    "cb.huescale", 
+    "cb.solstice", 
+    "cb.bird", 
+    "cb.pregunta", 
+    "cb.iris", 
+    "cb.extreme_rainbow",
+    "cb.pcream",
+    "cb.pcream_sepia",
+    "cb.rcream",
+)
 PALETTES_FULL = (*PALETTES,*tuple([i+"_r" for i in PALETTES]))
 
 STYLES = {
@@ -343,6 +355,120 @@ class Colorplots:
         plt.rcParams['axes.prop_cycle'] = cycler('linestyle', stylescheme[0:ncurves])*cycler('color', colorscheme[0:ncurves])
         return(colorscheme, stylescheme)
 
+    def pcream(self, ncurves):
+        stylescheme = [STYLES[key] for key in list(STYLES.keys())]
+        # stylescheme = [STYLES["solid"]]*ncurves
+        prop_cycle=plt.rcParams['axes.prop_cycle']
+        clist=prop_cycle.by_key()['color']
+        if(ncurves<=10):
+            colorscheme = [
+                "#faf4ef",
+                "#f0d9d2",
+                "#e6bdbc",
+                "#daa2ac",
+                "#c8879e",
+                "#b37093",
+                "#995a88",
+                "#7b4779",
+                "#5b3665",
+                "#3b264b"
+            ]
+        elif(ncurves>10 and ncurves<=10*13):
+            colorscheme = [
+                "#faf4ef",
+                "#f0d9d2",
+                "#e6bdbc",
+                "#daa2ac",
+                "#c8879e",
+                "#b37093",
+                "#995a88",
+                "#7b4779",
+                "#5b3665",
+                "#3b264b"
+            ]
+            print_warn("out of range [1-10]: changed the linestyle")
+        else:
+            colorscheme = clist
+            print_warn("out of range [1-10]: coloblind mode deactivated")
+        plt.rcParams['axes.prop_cycle'] = cycler('linestyle', stylescheme[0:ncurves])*cycler('color', colorscheme[0:ncurves])
+        return(colorscheme[::-1], stylescheme)
+
+    def pcream_sepia(self, ncurves):
+        stylescheme = [STYLES[key] for key in list(STYLES.keys())]
+        # stylescheme = [STYLES["solid"]]*ncurves
+        prop_cycle=plt.rcParams['axes.prop_cycle']
+        clist=prop_cycle.by_key()['color']
+        if(ncurves<=10):
+            colorscheme = [
+                "#fdfbeb",
+                "#f0ddcd",
+                "#e6c1b7",
+                "#daa6a7",
+                "#c88b99",
+                "#b3748e",
+                "#995e83",
+                "#7b4b74",
+                "#5b3a60",
+                "#3b2a46"
+            ]
+        elif(ncurves>10 and ncurves<=10*13):
+            colorscheme = [
+                "#fdfbeb",
+                "#f0ddcd",
+                "#e6c1b7",
+                "#daa6a7",
+                "#c88b99",
+                "#b3748e",
+                "#995e83",
+                "#7b4b74",
+                "#5b3a60",
+                "#3b2a46"
+            ]
+            print_warn("out of range [1-10]: changed the linestyle")
+        else:
+            colorscheme = clist
+            print_warn("out of range [1-10]: coloblind mode deactivated")
+        plt.rcParams['axes.prop_cycle'] = cycler('linestyle', stylescheme[0:ncurves])*cycler('color', colorscheme[0:ncurves])
+        return(colorscheme[::-1], stylescheme)
+
+    def rcream(self, ncurves):
+        stylescheme = [STYLES[key] for key in list(STYLES.keys())]
+        # stylescheme = [STYLES["solid"]]*ncurves
+        prop_cycle=plt.rcParams['axes.prop_cycle']
+        clist=prop_cycle.by_key()['color']
+        if(ncurves<=10):
+            colorscheme = [
+                "#faefef",
+                "#f0d9d2",
+                "#e6bcbc",
+                "#daa2a3",
+                "#c88788",
+                "#b37071",
+                "#995a5b",
+                "#7b4748",
+                "#653637",
+                "#4b2627"
+            ]
+        elif(ncurves>10 and ncurves<=10*13):
+            colorscheme = [
+                "#faefef",
+                "#f0d9d2",
+                "#e6bcbc",
+                "#daa2a3",
+                "#c88788",
+                "#b37071",
+                "#995a5b",
+                "#7b4748",
+                "#653637",
+                "#4b2627"
+            ]
+            print_warn("out of range [1-10]: changed the linestyle")
+        else:
+            colorscheme = clist
+            print_warn("out of range [1-10]: coloblind mode deactivated")
+        plt.rcParams['axes.prop_cycle'] = cycler('linestyle', stylescheme[0:ncurves])*cycler('color', colorscheme[0:ncurves])
+        return(colorscheme[::-1], stylescheme)
+
     def bird(self, ncurves):
         stylescheme = [STYLES[key] for key in list(STYLES.keys())]
         # stylescheme = [STYLES["solid"]]*ncurves
@@ -488,6 +614,12 @@ def _get_cbmap(palette, nbin=None):
         cbcmap = mcolors.LinearSegmentedColormap.from_list(f"{palette_tmp}", Colorplots().bird(9)[0], N=nbin)
     elif palette_tmp=="cb.pregunta":
         cbcmap = mcolors.LinearSegmentedColormap.from_list(f"{palette_tmp}", Colorplots().pregunta(9)[0], N=nbin)
+    elif palette_tmp=="cb.pcream":
+        cbcmap = mcolors.LinearSegmentedColormap.from_list(f"{palette_tmp}", Colorplots().pcream(10)[0], N=nbin)
+    elif palette_tmp=="cb.pcream_sepia":
+        cbcmap = mcolors.LinearSegmentedColormap.from_list(f"{palette_tmp}", Colorplots().pcream_sepia(10)[0], N=nbin)
+    elif palette_tmp=="cb.rcream":
+        cbcmap = mcolors.LinearSegmentedColormap.from_list(f"{palette_tmp}", Colorplots().rcream(10)[0], N=nbin)
     elif palette_tmp=="cb.iris":
         cmap_iris = ["#FEFBE9", "#FCF7D5", "#F5F3C1", "#EAF0B5", "#DDECBF", "#D0E7CA", "#C2E3D2", "#B5DDD8", "#A8D8DC", "#9BD2E1", "#8DCBE4", "#81C4E7", "#7BBCE7", "#7EB2E4", "#88A5DD", "#9398D2", "#9B8AC4", "#9D7DB2", "#9A709E", "#906388", "#805770", "#684957", "#46353A"]
         cbcmap = mcolors.LinearSegmentedColormap.from_list(f"{palette_tmp}", cmap_iris, N=nbin)
@@ -581,6 +713,51 @@ def test_solstice(ny):
 
     plt.show()
 
+def test_pcream(ny):
+    nx=100
+    x=np.linspace(0,10, nx)
+    y=np.zeros((ny,nx), dtype=int)
+    color, linestyle = Colorplots().pcream(ny)
+
+    fig, ax = plt.subplots()
+    for i in range(ny):
+        for j in range(nx):
+            y[i][j]=x[j]+i
+        # plt.plot(x,y[i], color[i], linewidth=2.0)
+        ax.plot(x,y[i], linewidth=2.0)
+
+    plt.show()
+
+def test_pcream_sepia(ny):
+    nx=100
+    x=np.linspace(0,10, nx)
+    y=np.zeros((ny,nx), dtype=int)
+    color, linestyle = Colorplots().pcream_sepia(ny)
+
+    fig, ax = plt.subplots()
+    for i in range(ny):
+        for j in range(nx):
+            y[i][j]=x[j]+i
+        # plt.plot(x,y[i], color[i], linewidth=2.0)
+        ax.plot(x,y[i], linewidth=2.0)
+
+    plt.show()
+
+def test_rcream(ny):
+    nx=100
+    x=np.linspace(0,10, nx)
+    y=np.zeros((ny,nx), dtype=int)
+    color, linestyle = Colorplots().rcream(ny)
+
+    fig, ax = plt.subplots()
+    for i in range(ny):
+        for j in range(nx):
+            y[i][j]=x[j]+i
+        # plt.plot(x,y[i], color[i], linewidth=2.0)
+        ax.plot(x,y[i], linewidth=2.0)
+
+    plt.show()
+
 def test_bird(ny):
     nx=100
     x=np.linspace(0,10, nx)
@@ -659,8 +836,8 @@ def test_monocolor(ny, *args):
 def test_mapping(palette=None,nbin=None):
     fig, ax = plt.subplots()
 
-    r = np.arange(-np.pi, np.pi, 0.1)
-    t = np.arange(0, 2*np.pi, 0.1)
+    r = np.arange(-np.pi, np.pi, 0.01)
+    t = np.arange(0, 2*np.pi, 0.01)
     X, Y = np.meshgrid(r, t)
     data = np.cos(X) * np.sin(Y) * 10
 
