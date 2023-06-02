@@ -6,7 +6,6 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "cblind"
-version = "2.2.4"
 description = "Color schemes for Python plots, from Paul Tol (2012)"
 authors = [
     { name = "G. Wafflard-Fernandez" },
@@ -23,6 +22,7 @@ dependencies = [
     "cycler",
     "numpy",
 ]
+dynamic = ["version"]
 
 [project.readme]
 file = "README.md"
@@ -50,3 +50,6 @@ include-package-data = false
 
 [tool.setuptools.packages.find]
 namespaces = false
+
+[tool.setuptools.dynamic]
+version = {attr = "cblind.__version__.__version__"}
