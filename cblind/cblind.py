@@ -1,4 +1,3 @@
-import sys
 from math import erf
 from warnings import warn
 
