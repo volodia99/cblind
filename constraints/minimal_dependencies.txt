@@ -1,0 +1,4 @@
+cycler==0.10
+matplotlib==3.5.0
+numpy==1.17.0
+
