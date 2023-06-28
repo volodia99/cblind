@@ -14,9 +14,8 @@ classifiers = [
     "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.6",
 ]
-requires-python = ">=3.6"
+requires-python = ">=3.7"
 dependencies = [
     "matplotlib>=3.5",
     "cycler>=0.10",
