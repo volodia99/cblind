@@ -28,7 +28,7 @@ import cblind as cb
 ### cblind
 
 ```python
-color, linestyle = cb.Coloplots().cblind(nb_of_plots)
+color, linestyle = cb.Colorplots().cblind(nb_of_plots)
 ```
 
 from 1 to 12 plots [DISTINCT COLORS]. For more than 12 plots, the linestyle is changed.  
@@ -42,7 +42,7 @@ cb.test_cblind(nb_of_plots)
 ### contrast
 
 ```python
-color, linestyle = cb.Coloplots().contrast(nb_of_plots)
+color, linestyle = cb.Colorplots().contrast(nb_of_plots)
 ```
 
 for less than 4 contrast plots [DISTINCT COLORS]. For more than 12 plots, the linestyle is changed.  
@@ -56,7 +56,7 @@ cb.test_contrast(nb_of_plots)
 ### huescale
 
 ```python
-color, linestyle = cb.Coloplots().huescale(nb_of_plots, *option)
+color, linestyle = cb.Colorplots().huescale(nb_of_plots, *option)
 ```
 
 from 1 to 9 plots [SEQUENTIAL DATA]. With option "blue","bluegreen","green", "gold","brown","rose","purple" for less than 3 plots, otherwise ocherscale.  
@@ -70,7 +70,7 @@ cb.test_huescale(nb_of_plots, *option)
 ### rbscale
 
 ```python
-color, linestyle = cb.Coloplots().rbscale(nb_of_plots)
+color, linestyle = cb.Colorplots().rbscale(nb_of_plots)
 ```
 
 from 3 to 11 plots [DIVERGING DATA].  
@@ -84,7 +84,7 @@ cb.test_rbscale(nb_of_plots)
 ### rainbow
 
 ```python
-color, linestyle = cb.Coloplots().rainbow(nb_of_plots)
+color, linestyle = cb.Colorplots().rainbow(nb_of_plots)
 ```
 
 from 4 to 12 plots [RAINBOW SCHEME].  
@@ -98,7 +98,7 @@ cb.test_rainbow(nb_of_plots)
 ### extreme_rainbow
 
 ```python
-color, linestyle = cb.Coloplots().extreme_rainbow(nb_of_plots)
+color, linestyle = cb.Colorplots().extreme_rainbow(nb_of_plots)
 ```
 
 from 1 to 34 plots [RAINBOW SCHEME].  
@@ -112,7 +112,7 @@ cb.test_extreme_rainbow(nb_of_plots)
 ### solstice
 
 ```python
-color, linestyle = cb.Coloplots().solstice(nb_of_plots)
+color, linestyle = cb.Colorplots().solstice(nb_of_plots)
 ```
 
 for less than 11 plots [DIVERGING DATA]  
@@ -126,7 +126,7 @@ cb.test_solstice(nb_of_plots)
 ### bird
 
 ```python
-color, linestyle = cb.Coloplots().bird(nb_of_plots)
+color, linestyle = cb.Colorplots().bird(nb_of_plots)
 ```
 
 for less than 9 plots [DIVERGING DATA]  
@@ -140,7 +140,7 @@ cb.test_bird(nb_of_plots)
 ### pregunta
 
 ```python
-color, linestyle = cb.Coloplots().pregunta(nb_of_plots)
+color, linestyle = cb.Colorplots().pregunta(nb_of_plots)
 ```
 
 for less than 9 plots [DIVERGING DATA]  
@@ -154,7 +154,7 @@ cb.test_pregunta(nb_of_plots)
 ### monocolor
 
 ```python
-color, linestyle = cb.Coloplots().monocolor(nb_of_plots, *option)
+color, linestyle = cb.Colorplots().monocolor(nb_of_plots, *option)
 ```
 
 from 1 to 13 monochromatic plots [MONOCOLOR/PRINTING] with different linestyles. With option "b&w", "blue", "red", "yellow", "green", "purple".
