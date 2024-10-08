@@ -22,11 +22,16 @@ jobs:
         - ubuntu-latest
         - macos-latest
         - windows-latest
-        python-version: ['3.12']
+        python-version: 
+          - '3.13'
         include:
-        - os: ubuntu-20.04
-          python-version: '3.7'
-          pip-args: --constraint constraints/minimal_dependencies.txt
+          - os: ubuntu-20.04
+            python-version: '3.7'
+            pip-args: --constraint constraints/minimal_dependencies.txt
+          - os: windows-latest
+            python-version: '3.7'
+          - os: macos-13
+            python-version: '3.7'
 
     runs-on: ${{ matrix.os }}
     steps:
