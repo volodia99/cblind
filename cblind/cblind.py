@@ -116,7 +116,7 @@ class Colorplots:
             warn("out of range [1-12]: changed the linestyle", stacklevel=2)
         else:
             colorscheme = clist
-            warn("out of range [1-156]: coloblind mode deactivated", stacklevel=2)
+            warn("out of range [1-156]: colorblind mode deactivated", stacklevel=2)
 
         if update_prop_cycle:
             mpl.rcParams['axes.prop_cycle'] = cycler('linestyle', stylescheme[0:ncurves])*cycler('color', colorscheme[0:ncurves])
@@ -133,7 +133,7 @@ class Colorplots:
             warn("out of range [1-4]: changed the linestyle", stacklevel=2)
         else:
             colorscheme = clist
-            warn("out of range [1-52]: coloblind mode deactivated", stacklevel=2)
+            warn("out of range [1-52]: colorblind mode deactivated", stacklevel=2)
 
         if update_prop_cycle:
             mpl.rcParams['axes.prop_cycle'] = cycler('linestyle', stylescheme[0:ncurves])*cycler('color', colorscheme[0:ncurves])
@@ -192,7 +192,7 @@ class Colorplots:
             warn("only ocherscale for more than 3 plots", stacklevel=2)
         if(ncurves>9):
             colorscheme = clist
-            warn("out of range [1-9]: coloblind mode deactivated", stacklevel=2)
+            warn("out of range [1-9]: colorblind mode deactivated", stacklevel=2)
 
         if update_prop_cycle:
             mpl.rcParams['axes.prop_cycle'] = cycler('linestyle', stylescheme[0:ncurves])*cycler('color', colorscheme[0:ncurves])
@@ -227,7 +227,7 @@ class Colorplots:
             warn("out of range [3-11]: changed the linestyle", stacklevel=2)
         else:
             colorscheme = clist
-            warn("out of range [3-11]: coloblind mode deactivated", stacklevel=2)
+            warn("out of range [3-11]: colorblind mode deactivated", stacklevel=2)
 
         if update_prop_cycle:
             mpl.rcParams['axes.prop_cycle'] = cycler('linestyle', stylescheme[0:ncurves])*cycler('color', colorscheme[0:ncurves])
@@ -262,7 +262,7 @@ class Colorplots:
             warn("out of range [4-12]: changed the linestyle", stacklevel=2)
         else:
             colorscheme = clist
-            warn("out of range [4-12]: coloblind mode deactivated", stacklevel=2)
+            warn("out of range [4-12]: colorblind mode deactivated", stacklevel=2)
 
         if update_prop_cycle:
             mpl.rcParams['axes.prop_cycle'] = cycler('linestyle', stylescheme[0:ncurves])*cycler('color', colorscheme[0:ncurves])
@@ -327,7 +327,7 @@ class Colorplots:
             warn("out of range [1-34]: changed the linestyle", stacklevel=2)
         else:
             colorscheme = clist
-            warn("out of range [1-34]: coloblind mode deactivated", stacklevel=2)
+            warn("out of range [1-34]: colorblind mode deactivated", stacklevel=2)
 
         if update_prop_cycle:
             mpl.rcParams['axes.prop_cycle'] = cycler('linestyle', stylescheme[0:ncurves])*cycler('color', colorscheme[0:ncurves])
@@ -345,7 +345,7 @@ class Colorplots:
             warn("out of range [1-11]: changed the linestyle", stacklevel=2)
         else:
             colorscheme = clist
-            warn("out of range [1-11]: coloblind mode deactivated", stacklevel=2)
+            warn("out of range [1-11]: colorblind mode deactivated", stacklevel=2)
 
         if update_prop_cycle:
             mpl.rcParams['axes.prop_cycle'] = cycler('linestyle', stylescheme[0:ncurves])*cycler('color', colorscheme[0:ncurves])
@@ -363,7 +363,7 @@ class Colorplots:
             warn("out of range [1-9]: changed the linestyle", stacklevel=2)
         else:
             colorscheme = clist
-            warn("out of range [1-9]: coloblind mode deactivated", stacklevel=2)
+            warn("out of range [1-9]: colorblind mode deactivated", stacklevel=2)
 
         if update_prop_cycle:
             mpl.rcParams['axes.prop_cycle'] = cycler('linestyle', stylescheme[0:ncurves])*cycler('color', colorscheme[0:ncurves])
@@ -381,7 +381,7 @@ class Colorplots:
             warn("out of range [1-9]: changed the linestyle", stacklevel=2)
         else:
             colorscheme = clist
-            warn("out of range [1-9]: coloblind mode deactivated", stacklevel=2)
+            warn("out of range [1-9]: colorblind mode deactivated", stacklevel=2)
 
         if update_prop_cycle:
             mpl.rcParams['axes.prop_cycle'] = cycler('linestyle', stylescheme[0:ncurves])*cycler('color', colorscheme[0:ncurves])
